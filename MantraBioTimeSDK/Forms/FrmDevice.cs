@@ -192,6 +192,7 @@ namespace MantraBioTimeSDK
             MantraBioTimeSDK.theForm.pnlFillTerminal.Dock = DockStyle.Fill;
             MantraBioTimeSDK.theForm.pnlFillTerminal.Controls.Add(_FrmTerminal);
             _FrmTerminal.Show();
+            MantraBioTimeSDK.theForm.btnTerminal.Enabled = true;
             this.Close();
         }
         #endregion

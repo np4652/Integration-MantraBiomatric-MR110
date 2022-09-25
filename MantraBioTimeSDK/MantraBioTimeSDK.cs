@@ -25,10 +25,10 @@ namespace MantraBioTimeSDK
         public MantraBioTimeSDK()
         {
             InitializeComponent();
-
             // Initialize objects
             theDelegateAppendMessage = new delegateAppendMessage(AppendMessage);
             theForm = this;
+            theForm.Dock = DockStyle.Fill;
         }
 
         #endregion
@@ -351,6 +351,19 @@ namespace MantraBioTimeSDK
         {
             //Application.StartupPath;
         }
-       
+
+        private void _maximize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            _restoreWin.Visible = true;
+            _maximize.Visible = false;
+        }
+
+        private void _restoreWin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            _restoreWin.Visible = false;
+            _maximize.Visible = true;
+        }
     }
 }

@@ -35,10 +35,14 @@
             this.btnTerminal = new System.Windows.Forms.Button();
             this.btnDevice = new System.Windows.Forms.Button();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this._restoreWin = new System.Windows.Forms.PictureBox();
+            this._maximize = new System.Windows.Forms.PictureBox();
             this._Minimize = new System.Windows.Forms.PictureBox();
             this._Close = new System.Windows.Forms.PictureBox();
             this.MantraLogo = new System.Windows.Forms.PictureBox();
             this.PnlDeviceName = new System.Windows.Forms.Panel();
+            this.lblDeviceName = new System.Windows.Forms.Label();
+            this.lblMsg = new System.Windows.Forms.Label();
             this.lblHelp = new System.Windows.Forms.Label();
             this.lblMenu = new System.Windows.Forms.Label();
             this.pnlFillLog = new System.Windows.Forms.Panel();
@@ -56,10 +60,10 @@
             this.lblEventLogs = new System.Windows.Forms.Label();
             this.lblErrorLogs = new System.Windows.Forms.Label();
             this.EventLogs = new System.Windows.Forms.ListBox();
-            this.lblMsg = new System.Windows.Forms.Label();
-            this.lblDeviceName = new System.Windows.Forms.Label();
             this.pnlMainMenu.SuspendLayout();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._restoreWin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._maximize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._Minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._Close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MantraLogo)).BeginInit();
@@ -85,6 +89,7 @@
             // 
             this.btnLogDataMgmt.BackColor = System.Drawing.Color.Transparent;
             this.btnLogDataMgmt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLogDataMgmt.Enabled = false;
             this.btnLogDataMgmt.FlatAppearance.BorderSize = 0;
             this.btnLogDataMgmt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogDataMgmt.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,6 +108,7 @@
             // 
             this.btnUserDataMgmt.BackColor = System.Drawing.Color.Transparent;
             this.btnUserDataMgmt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnUserDataMgmt.Enabled = false;
             this.btnUserDataMgmt.FlatAppearance.BorderSize = 0;
             this.btnUserDataMgmt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUserDataMgmt.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -121,6 +127,7 @@
             // 
             this.btnTerminal.BackColor = System.Drawing.Color.Transparent;
             this.btnTerminal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnTerminal.Enabled = false;
             this.btnTerminal.FlatAppearance.BorderSize = 0;
             this.btnTerminal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTerminal.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -156,6 +163,8 @@
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.White;
+            this.pnlHeader.Controls.Add(this._restoreWin);
+            this.pnlHeader.Controls.Add(this._maximize);
             this.pnlHeader.Controls.Add(this._Minimize);
             this.pnlHeader.Controls.Add(this._Close);
             this.pnlHeader.Controls.Add(this.MantraLogo);
@@ -168,13 +177,41 @@
             this.pnlHeader.Size = new System.Drawing.Size(934, 39);
             this.pnlHeader.TabIndex = 0;
             // 
+            // _restoreWin
+            // 
+            this._restoreWin.BackColor = System.Drawing.Color.Transparent;
+            this._restoreWin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_restoreWin.BackgroundImage")));
+            this._restoreWin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this._restoreWin.InitialImage = null;
+            this._restoreWin.Location = new System.Drawing.Point(852, 0);
+            this._restoreWin.Name = "_restoreWin";
+            this._restoreWin.Size = new System.Drawing.Size(41, 39);
+            this._restoreWin.TabIndex = 15;
+            this._restoreWin.TabStop = false;
+            this._restoreWin.Visible = false;
+            this._restoreWin.Click += new System.EventHandler(this._restoreWin_Click);
+            // 
+            // _maximize
+            // 
+            this._maximize.BackColor = System.Drawing.Color.Transparent;
+            this._maximize.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_maximize.BackgroundImage")));
+            this._maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this._maximize.InitialImage = null;
+            this._maximize.Location = new System.Drawing.Point(851, 0);
+            this._maximize.Name = "_maximize";
+            this._maximize.Size = new System.Drawing.Size(41, 39);
+            this._maximize.TabIndex = 14;
+            this._maximize.TabStop = false;
+            this._maximize.Visible = false;
+            this._maximize.Click += new System.EventHandler(this._maximize_Click);
+            // 
             // _Minimize
             // 
             this._Minimize.BackColor = System.Drawing.Color.Transparent;
             this._Minimize.BackgroundImage = global::MantraBioTimeSDK.Properties.Resources.minimize;
             this._Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this._Minimize.InitialImage = null;
-            this._Minimize.Location = new System.Drawing.Point(853, 0);
+            this._Minimize.Location = new System.Drawing.Point(850, 0);
             this._Minimize.Name = "_Minimize";
             this._Minimize.Size = new System.Drawing.Size(41, 39);
             this._Minimize.TabIndex = 13;
@@ -220,6 +257,28 @@
             this.PnlDeviceName.Name = "PnlDeviceName";
             this.PnlDeviceName.Size = new System.Drawing.Size(934, 27);
             this.PnlDeviceName.TabIndex = 2;
+            // 
+            // lblDeviceName
+            // 
+            this.lblDeviceName.AutoSize = true;
+            this.lblDeviceName.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeviceName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(136)))), ((int)(((byte)(14)))));
+            this.lblDeviceName.Location = new System.Drawing.Point(332, 5);
+            this.lblDeviceName.Name = "lblDeviceName";
+            this.lblDeviceName.Size = new System.Drawing.Size(77, 14);
+            this.lblDeviceName.TabIndex = 102;
+            this.lblDeviceName.Text = "|| Home ||";
+            this.lblDeviceName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblMsg
+            // 
+            this.lblMsg.AutoSize = true;
+            this.lblMsg.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.lblMsg.ForeColor = System.Drawing.Color.Black;
+            this.lblMsg.Location = new System.Drawing.Point(466, 8);
+            this.lblMsg.Name = "lblMsg";
+            this.lblMsg.Size = new System.Drawing.Size(0, 17);
+            this.lblMsg.TabIndex = 101;
             // 
             // lblHelp
             // 
@@ -404,28 +463,6 @@
             this.EventLogs.Size = new System.Drawing.Size(462, 93);
             this.EventLogs.TabIndex = 2;
             // 
-            // lblMsg
-            // 
-            this.lblMsg.AutoSize = true;
-            this.lblMsg.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.lblMsg.ForeColor = System.Drawing.Color.Black;
-            this.lblMsg.Location = new System.Drawing.Point(466, 8);
-            this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(0, 17);
-            this.lblMsg.TabIndex = 101;
-            // 
-            // lblDeviceName
-            // 
-            this.lblDeviceName.AutoSize = true;
-            this.lblDeviceName.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeviceName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(136)))), ((int)(((byte)(14)))));
-            this.lblDeviceName.Location = new System.Drawing.Point(332, 5);
-            this.lblDeviceName.Name = "lblDeviceName";
-            this.lblDeviceName.Size = new System.Drawing.Size(77, 14);
-            this.lblDeviceName.TabIndex = 102;
-            this.lblDeviceName.Text = "|| Home ||";
-            this.lblDeviceName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // MantraBioTimeSDK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
@@ -451,6 +488,8 @@
             this.Load += new System.EventHandler(this.MantraBioTimeSDK_Load);
             this.pnlMainMenu.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._restoreWin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._maximize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._Minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._Close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MantraLogo)).EndInit();
@@ -466,7 +505,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlMainMenu;
-        private System.Windows.Forms.Button btnTerminal;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.PictureBox _Minimize;
         private System.Windows.Forms.PictureBox _Close;
@@ -485,15 +523,18 @@
         public System.Windows.Forms.ListBox ErrorLogs;
         public System.Windows.Forms.ListBox EventLogs;
         protected internal System.Windows.Forms.Button btnDevice;
-        private System.Windows.Forms.Button btnUserDataMgmt;
         private System.Windows.Forms.Panel pnlFillUser;
         public System.Windows.Forms.Label lblMenu;
-        private System.Windows.Forms.Button btnLogDataMgmt;
         private System.Windows.Forms.LinkLabel lnkErrorLog;
         private System.Windows.Forms.LinkLabel lnkEventLog;
         public System.Windows.Forms.Label lblHelp;
         public System.Windows.Forms.Label lblMsg;
         public System.Windows.Forms.Label lblDeviceName;
+        public System.Windows.Forms.Button btnUserDataMgmt;
+        public System.Windows.Forms.Button btnLogDataMgmt;
+        public System.Windows.Forms.PictureBox _restoreWin;
+        public System.Windows.Forms.PictureBox _maximize;
+        public System.Windows.Forms.Button btnTerminal;
     }
 }
 

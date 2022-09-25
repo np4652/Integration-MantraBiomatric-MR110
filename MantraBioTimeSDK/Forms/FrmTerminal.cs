@@ -92,6 +92,8 @@ namespace MantraBioTimeSDK
                         MantraBioTime.CapacityInfo(clsGlobal.DeviceType);
                         MantraBioTimeSDK.theForm.EventLogs.Items.Add("Get DeviceCapacity*.");
                         MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
+                        MantraBioTimeSDK.theForm.btnUserDataMgmt.Enabled = true;
+                        MantraBioTimeSDK.theForm.btnLogDataMgmt.Enabled = true;
                     }
                 }
                 else
@@ -131,7 +133,9 @@ namespace MantraBioTimeSDK
                     tabConnect.Enabled = true;
                     tabRS.Enabled = true;
                     tabUSB.Enabled = true;
-                    MantraBioTimeSDK.theForm.btnDevice.Enabled = true;                    
+                    MantraBioTimeSDK.theForm.btnDevice.Enabled = true;
+                    MantraBioTimeSDK.theForm.btnUserDataMgmt.Enabled = true;
+                    MantraBioTimeSDK.theForm.btnLogDataMgmt.Enabled = true;
                 }
             }
             catch (Exception Ex)
