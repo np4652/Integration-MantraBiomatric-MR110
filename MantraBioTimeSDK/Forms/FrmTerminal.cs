@@ -81,7 +81,7 @@ namespace MantraBioTimeSDK
             {
                 bool RetVal = false;                
                 if (btnConnect.Text == "Connect")
-                {                    
+                {
                     if (MantraBioTime.ConnectTCP(Convert.ToInt32(clsGlobal.DevID), clsGlobal.DevIP, Convert.ToInt32(clsGlobal.DevPort == "" ? 0 : Convert.ToInt32(clsGlobal.DevPort)), Convert.ToInt32(clsGlobal.DevPass), clsGlobal.DeviceType) == 0)
                     {                       
                         RetVal = true;
@@ -94,6 +94,10 @@ namespace MantraBioTimeSDK
                         MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
                         MantraBioTimeSDK.theForm.btnUserDataMgmt.Enabled = true;
                         MantraBioTimeSDK.theForm.btnLogDataMgmt.Enabled = true;
+
+                        var helper = new Helpers();
+                        helper.DeleteExpiredSubscription();
+                        helper.syncData();
                     }
                 }
                 else

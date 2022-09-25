@@ -622,54 +622,51 @@ namespace MantraBioTimeSDK
 
         private void btn_DeleteExpiredSubscription_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string apiData = new WebClient().DownloadString("https://themusclesbargym.in/api/user/subscriptionexpired");
-                var data = JsonConvert.DeserializeObject<List<DisableUsers>>(apiData);
-                foreach (var user in data)
-                {
-                    MantraBioTime.DeleteEnrollData(clsGlobal.DeviceType, user.bioid.ToString());
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
+            var helper = new Helpers();
+            helper.DeleteExpiredSubscription();
         }
 
         private void btn_ReactiveUser_Click(object sender, EventArgs e)
         {
-            try
+            if (clsGlobal.IsConnect)
             {
-                bool isValid = true;
-                if (string.IsNullOrEmpty(txtUID.Text))
+                try
                 {
-                    MantraBioTimeSDK.theForm.lblMsg.Text = "*Please enter user id.";
-                    MantraBioTimeSDK.theForm.lblMsg.ForeColor = Color.Red;
-                    isValid = false;
+                    bool isValid = true;
+                    if (string.IsNullOrEmpty(txtUID.Text))
+                    {
+                        MantraBioTimeSDK.theForm.lblMsg.Text = "*Please enter user id.";
+                        MantraBioTimeSDK.theForm.lblMsg.ForeColor = Color.Red;
+                        isValid = false;
+                    }
+                    if (isValid)
+                    {
+                        StringBuilder sb = new StringBuilder("https://themusclesbargym.in/api/subscriptionbyuser?");
+                        sb.Append($"userId={txtUID.Text}");
+                        string apiData = new WebClient().DownloadString(sb.ToString());
+                        var response = JsonConvert.DeserializeObject<APIResponse<subscriptionbyuserResponse>>(apiData);
+                        if (response != null && response.statusCode == 1 && response.result != null)
+                            AddUser(new UserDetail
+                            {
+                                UserId = Convert.ToInt32(txtUID.Text),
+                                fIndex = 0,
+                                Name = response.result.name,
+                                Password = "",
+                                CardNumber = "",
+                                IsUserEnable = true,
+                                Privilege = "0"
+                            });
+                    }
                 }
-                if (isValid)
+                catch (Exception ex)
                 {
-                    StringBuilder sb = new StringBuilder("https://themusclesbargym.in/api/subscriptionbyuser?");
-                    sb.Append($"userId={txtUID.Text}");
-                    string apiData = new WebClient().DownloadString(sb.ToString());
-                    var response = JsonConvert.DeserializeObject<APIResponse<subscriptionbyuserResponse>>(apiData);
-                    if (response != null && response.statusCode == 1 && response.result != null)
-                        AddUser(new UserDetail
-                        {
-                            UserId = Convert.ToInt32(txtUID.Text),
-                            fIndex = 0,
-                            Name = response.result.name,
-                            Password = "",
-                            CardNumber = "",
-                            IsUserEnable = true,
-                            Privilege = "0"
-                        });
+                    MantraBioTimeSDK.theForm.ErrorLogs.Items.Add("Something went wrong.Please try after sometime.");
+                    MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add("Something went wrong.Please try after sometime.");
+                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add("Please connect device first");
                 MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
             }
         }
@@ -715,7 +712,7 @@ namespace MantraBioTimeSDK
         }
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
-        {            
+        {
             try
             {
                 bool isValid = true;
@@ -755,7 +752,8 @@ namespace MantraBioTimeSDK
                             mt = 4;
                             break;
                     }
-                    string apiData = PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/register", new
+                    var helper = new Helpers();
+                    string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/register", new
                     {
                         Name = txtUName.Text,
                         PhoneNumber = txtPhoneNumber.Text,

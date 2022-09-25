@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlLogDataManagement = new System.Windows.Forms.Panel();
             this.grpLogDataManagement = new System.Windows.Forms.GroupBox();
             this.dgvLogData = new System.Windows.Forms.DataGridView();
             this.grpUserInfo = new System.Windows.Forms.GroupBox();
+            this.btnSyncData = new System.Windows.Forms.Button();
             this.btnTimePeriodLogData = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
@@ -54,7 +55,7 @@
             this.pnlLogDataManagement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlLogDataManagement.Location = new System.Drawing.Point(0, 0);
             this.pnlLogDataManagement.Name = "pnlLogDataManagement";
-            this.pnlLogDataManagement.Size = new System.Drawing.Size(930, 460);
+            this.pnlLogDataManagement.Size = new System.Drawing.Size(1129, 449);
             this.pnlLogDataManagement.TabIndex = 1;
             // 
             // grpLogDataManagement
@@ -65,7 +66,7 @@
             this.grpLogDataManagement.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpLogDataManagement.Location = new System.Drawing.Point(0, 0);
             this.grpLogDataManagement.Name = "grpLogDataManagement";
-            this.grpLogDataManagement.Size = new System.Drawing.Size(930, 460);
+            this.grpLogDataManagement.Size = new System.Drawing.Size(1129, 449);
             this.grpLogDataManagement.TabIndex = 3;
             this.grpLogDataManagement.TabStop = false;
             this.grpLogDataManagement.Text = "Log Data Management";
@@ -77,14 +78,14 @@
             this.dgvLogData.AllowUserToResizeRows = false;
             this.dgvLogData.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvLogData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLogData.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLogData.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvLogData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLogData.Location = new System.Drawing.Point(3, 68);
             this.dgvLogData.MultiSelect = false;
@@ -92,18 +93,19 @@
             this.dgvLogData.ReadOnly = true;
             this.dgvLogData.RowHeadersWidth = 20;
             this.dgvLogData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvLogData.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvLogData.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvLogData.RowTemplate.Height = 23;
             this.dgvLogData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLogData.Size = new System.Drawing.Size(924, 389);
+            this.dgvLogData.Size = new System.Drawing.Size(1123, 378);
             this.dgvLogData.TabIndex = 98;
             // 
             // grpUserInfo
             // 
+            this.grpUserInfo.Controls.Add(this.btnSyncData);
             this.grpUserInfo.Controls.Add(this.btnTimePeriodLogData);
             this.grpUserInfo.Controls.Add(this.label4);
             this.grpUserInfo.Controls.Add(this.dtpToDate);
@@ -115,10 +117,24 @@
             this.grpUserInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpUserInfo.Location = new System.Drawing.Point(3, 18);
             this.grpUserInfo.Name = "grpUserInfo";
-            this.grpUserInfo.Size = new System.Drawing.Size(924, 50);
+            this.grpUserInfo.Size = new System.Drawing.Size(1123, 50);
             this.grpUserInfo.TabIndex = 83;
             this.grpUserInfo.TabStop = false;
             this.grpUserInfo.Text = "Read Log Data";
+            // 
+            // btnSyncData
+            // 
+            this.btnSyncData.BackColor = System.Drawing.Color.IndianRed;
+            this.btnSyncData.FlatAppearance.BorderSize = 0;
+            this.btnSyncData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSyncData.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSyncData.Location = new System.Drawing.Point(735, 20);
+            this.btnSyncData.Name = "btnSyncData";
+            this.btnSyncData.Size = new System.Drawing.Size(142, 23);
+            this.btnSyncData.TabIndex = 112;
+            this.btnSyncData.Text = "Sync Data";
+            this.btnSyncData.UseVisualStyleBackColor = false;
+            this.btnSyncData.Click += new System.EventHandler(this.btnSyncData_Click);
             // 
             // btnTimePeriodLogData
             // 
@@ -128,9 +144,9 @@
             this.btnTimePeriodLogData.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTimePeriodLogData.Location = new System.Drawing.Point(330, 21);
             this.btnTimePeriodLogData.Name = "btnTimePeriodLogData";
-            this.btnTimePeriodLogData.Size = new System.Drawing.Size(157, 23);
+            this.btnTimePeriodLogData.Size = new System.Drawing.Size(125, 23);
             this.btnTimePeriodLogData.TabIndex = 111;
-            this.btnTimePeriodLogData.Text = "Time Period Log Data";
+            this.btnTimePeriodLogData.Text = "Time Period Log";
             this.btnTimePeriodLogData.UseVisualStyleBackColor = false;
             this.btnTimePeriodLogData.Click += new System.EventHandler(this.btnTimePeriodLogData_Click);
             // 
@@ -179,11 +195,11 @@
             this.btnDeleteAllLogData.FlatAppearance.BorderSize = 0;
             this.btnDeleteAllLogData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteAllLogData.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteAllLogData.Location = new System.Drawing.Point(777, 21);
+            this.btnDeleteAllLogData.Location = new System.Drawing.Point(638, 21);
             this.btnDeleteAllLogData.Name = "btnDeleteAllLogData";
-            this.btnDeleteAllLogData.Size = new System.Drawing.Size(142, 23);
+            this.btnDeleteAllLogData.Size = new System.Drawing.Size(91, 23);
             this.btnDeleteAllLogData.TabIndex = 72;
-            this.btnDeleteAllLogData.Text = "Delete All Log Data";
+            this.btnDeleteAllLogData.Text = "Delete Log";
             this.btnDeleteAllLogData.UseVisualStyleBackColor = false;
             this.btnDeleteAllLogData.Click += new System.EventHandler(this.btnDeleteAllLogData_Click);
             // 
@@ -193,11 +209,11 @@
             this.btnReadAllLogData.FlatAppearance.BorderSize = 0;
             this.btnReadAllLogData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReadAllLogData.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReadAllLogData.Location = new System.Drawing.Point(641, 21);
+            this.btnReadAllLogData.Location = new System.Drawing.Point(550, 20);
             this.btnReadAllLogData.Name = "btnReadAllLogData";
-            this.btnReadAllLogData.Size = new System.Drawing.Size(132, 23);
+            this.btnReadAllLogData.Size = new System.Drawing.Size(82, 23);
             this.btnReadAllLogData.TabIndex = 71;
-            this.btnReadAllLogData.Text = "Read All Log Data";
+            this.btnReadAllLogData.Text = "All Log";
             this.btnReadAllLogData.UseVisualStyleBackColor = false;
             this.btnReadAllLogData.Click += new System.EventHandler(this.btnReadAllLogData_Click);
             // 
@@ -207,11 +223,11 @@
             this.btnReadNewLogData.FlatAppearance.BorderSize = 0;
             this.btnReadNewLogData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReadNewLogData.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReadNewLogData.Location = new System.Drawing.Point(492, 21);
+            this.btnReadNewLogData.Location = new System.Drawing.Point(461, 21);
             this.btnReadNewLogData.Name = "btnReadNewLogData";
-            this.btnReadNewLogData.Size = new System.Drawing.Size(145, 23);
+            this.btnReadNewLogData.Size = new System.Drawing.Size(83, 23);
             this.btnReadNewLogData.TabIndex = 70;
-            this.btnReadNewLogData.Text = "Read New Log Data";
+            this.btnReadNewLogData.Text = "New Log";
             this.btnReadNewLogData.UseVisualStyleBackColor = false;
             this.btnReadNewLogData.Click += new System.EventHandler(this.btnReadNewLogData_Click);
             // 
@@ -219,7 +235,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(930, 460);
+            this.ClientSize = new System.Drawing.Size(1129, 449);
             this.Controls.Add(this.pnlLogDataManagement);
             this.Font = new System.Drawing.Font("Verdana", 8.25F);
             this.ForeColor = System.Drawing.Color.Transparent;
@@ -249,5 +265,6 @@
         private System.Windows.Forms.DateTimePicker dtpToDate;
         private System.Windows.Forms.Button btnTimePeriodLogData;
         private System.Windows.Forms.DataGridView dgvLogData;
+        private System.Windows.Forms.Button btnSyncData;
     }
 }
