@@ -94,7 +94,7 @@ namespace MantraBioTimeSDK
                         MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
                         MantraBioTimeSDK.theForm.btnUserDataMgmt.Enabled = true;
                         MantraBioTimeSDK.theForm.btnLogDataMgmt.Enabled = true;
-
+                        clsGlobal.IsConnect = true;
                         var helper = new Helpers();
                         helper.DeleteExpiredSubscription();
                         helper.syncData();

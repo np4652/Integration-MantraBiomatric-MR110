@@ -33,10 +33,13 @@
             this.tabMORX = new System.Windows.Forms.TabPage();
             this.lnkLblBIOTIMEMR110 = new System.Windows.Forms.LinkLabel();
             this.imgMR110 = new System.Windows.Forms.PictureBox();
+            this.lnkLblBIOFACEMSD1K = new System.Windows.Forms.LinkLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlDeviceScreen.SuspendLayout();
             this.tabDevice.SuspendLayout();
             this.tabMORX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgMR110)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlDeviceScreen
@@ -67,6 +70,8 @@
             // 
             this.tabMORX.BackColor = System.Drawing.Color.White;
             this.tabMORX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabMORX.Controls.Add(this.lnkLblBIOFACEMSD1K);
+            this.tabMORX.Controls.Add(this.pictureBox1);
             this.tabMORX.Controls.Add(this.lnkLblBIOTIMEMR110);
             this.tabMORX.Controls.Add(this.imgMR110);
             this.tabMORX.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,7 +86,7 @@
             // 
             this.lnkLblBIOTIMEMR110.AutoSize = true;
             this.lnkLblBIOTIMEMR110.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnkLblBIOTIMEMR110.Location = new System.Drawing.Point(386, 315);
+            this.lnkLblBIOTIMEMR110.Location = new System.Drawing.Point(172, 315);
             this.lnkLblBIOTIMEMR110.Name = "lnkLblBIOTIMEMR110";
             this.lnkLblBIOTIMEMR110.Size = new System.Drawing.Size(140, 18);
             this.lnkLblBIOTIMEMR110.TabIndex = 2;
@@ -94,11 +99,34 @@
             // 
             this.imgMR110.BackgroundImage = global::MantraBioTimeSDK.Properties.Resources.BioTime___MR110;
             this.imgMR110.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgMR110.Location = new System.Drawing.Point(301, 40);
+            this.imgMR110.Location = new System.Drawing.Point(87, 40);
             this.imgMR110.Name = "imgMR110";
             this.imgMR110.Size = new System.Drawing.Size(305, 270);
             this.imgMR110.TabIndex = 1;
             this.imgMR110.TabStop = false;
+            // 
+            // lnkLblBIOFACEMSD1K
+            // 
+            this.lnkLblBIOFACEMSD1K.AutoSize = true;
+            this.lnkLblBIOFACEMSD1K.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnkLblBIOFACEMSD1K.Location = new System.Drawing.Point(594, 314);
+            this.lnkLblBIOFACEMSD1K.Name = "lnkLblBIOFACEMSD1K";
+            this.lnkLblBIOFACEMSD1K.Size = new System.Drawing.Size(133, 18);
+            this.lnkLblBIOFACEMSD1K.TabIndex = 4;
+            this.lnkLblBIOFACEMSD1K.TabStop = true;
+            this.lnkLblBIOFACEMSD1K.Tag = "MORX";
+            this.lnkLblBIOFACEMSD1K.Text = "BioFace-MSD1K";
+            this.lnkLblBIOFACEMSD1K.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLblBIOFACEMSD1K_LinkClicked);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::MantraBioTimeSDK.Properties.Resources.BioTime___MR110;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(509, 39);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(305, 270);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmDevice
             // 
@@ -117,6 +145,7 @@
             this.tabMORX.ResumeLayout(false);
             this.tabMORX.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgMR110)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -128,5 +157,7 @@
         private System.Windows.Forms.TabPage tabMORX;
         private System.Windows.Forms.LinkLabel lnkLblBIOTIMEMR110;
         private System.Windows.Forms.PictureBox imgMR110;
+        private System.Windows.Forms.LinkLabel lnkLblBIOFACEMSD1K;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

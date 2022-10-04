@@ -156,7 +156,7 @@ namespace MantraBioTimeSDK
                 try
                 {
                     DataTable Dt = new DataTable();
-                    _flgVal = MantraBioTime.ReadNewLogData(clsGlobal.DeviceType, ref Dt);
+                    _flgVal = MantraBioTime.ReadAllLogData(clsGlobal.DeviceType, ref Dt);
                     if (_flgVal == 0)
                     {
                         MantraBioTimeSDK.theForm.EventLogs.Items.Add("Get New AttenLogData Successfully.");
