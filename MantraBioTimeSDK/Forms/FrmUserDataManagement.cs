@@ -36,7 +36,7 @@ namespace MantraBioTimeSDK
                 this.cbPrivilege.Items.Add("5-Undefine");
                 this.cbUserEnable.SelectedIndex = 0;
 
-                
+
             }
             else if (clsGlobal.DeviceType == 2)
             {
@@ -57,6 +57,13 @@ namespace MantraBioTimeSDK
             this.cbMembershipType.Items.Add("Yearly");
             this.cbMembershipType.SelectedIndex = 0;
 
+            this.cbMembershipType2.Items.Clear();
+            this.cbMembershipType2.Items.Add("Monthly");
+            this.cbMembershipType2.Items.Add("Quarterly");
+            this.cbMembershipType2.Items.Add("HalfYearly");
+            this.cbMembershipType2.Items.Add("Yearly");
+            this.cbMembershipType2.SelectedIndex = 0;
+
             this.cbMaritalStatus.Items.Clear();
             this.cbMaritalStatus.Items.Add("Single");
             this.cbMaritalStatus.Items.Add("Married");
@@ -66,6 +73,13 @@ namespace MantraBioTimeSDK
             this.cbGender.Items.Add("Male");
             this.cbGender.Items.Add("Female");
             this.cbGender.SelectedIndex = 0;
+
+            this.cbMode.Items.Clear();
+            this.cbMode.Items.Add("Cash");
+            this.cbMode.Items.Add("UPI");
+            this.cbMode.Items.Add("Bank");
+            this.cbMode.SelectedIndex = 0;
+
         }
 
         #region "Button Events"
@@ -316,7 +330,7 @@ namespace MantraBioTimeSDK
             {
                 Cursor = Cursors.Default;
             }
-            }
+        }
 
         private void btnSetAllUserEnrollData_Click(object sender, EventArgs e)
         {
@@ -888,7 +902,23 @@ namespace MantraBioTimeSDK
             int _flgVal = 0;
             try
             {
-                _flgVal = MantraBioTime.SetUserValidDate(clsGlobal.DeviceType, txtUserID2.Text.Trim(), dtStartDate.Value.ToString("yyyy-MM-dd"), dtEndDate.Value.ToString("yyyy-MM-dd"));
+                var helper = new Helpers();
+                string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/collecFee", new
+                {
+                    UserId = txtUserID2.Text,
+                    PhoneNumber = txtmobileNo.Text,
+                    Amount = txtAmount.Text,
+                    Discount = txtDiscount.Text,
+                    FromDate = dtStartDate.Text,
+                    ToDate = dtEndDate.Text,
+                    PaymentMode = cbMode.Text,
+                    MembershipType = cbMembershipType2.Text,
+                });
+                var response = JsonConvert.DeserializeObject<CollectFeeResponse>(apiData);
+                if (response.statusCode == 1 && response.userId > 0)
+                {
+                    _flgVal = MantraBioTime.SetUserValidDate(clsGlobal.DeviceType, response.userId.ToString(), dtStartDate.Value.ToString("yyyy-MM-dd"), dtEndDate.Value.ToString("yyyy-MM-dd"));
+                }
                 if (_flgVal == 0)
                 {
                     MantraBioTimeSDK.theForm.EventLogs.Items.Add("Set User Access Time Period Successfully!");
@@ -949,14 +979,14 @@ namespace MantraBioTimeSDK
             dtStartDate.Text = FromDate;
             dtEndDate.Text = ToDate;
         }
-        
+
         private void btnSetUserInfo_Click_1(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
             int _flgVal = 0;
             try
             {
-                
+
                 DataTable tblData = new DataTable();
                 tblData = SqliteDB.SelectUserDataByID(Convert.ToInt64(txtUserID.Text.Trim()));
                 if (tblData.Rows.Count > 0)

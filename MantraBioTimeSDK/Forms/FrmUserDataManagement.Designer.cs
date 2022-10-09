@@ -34,6 +34,12 @@ namespace MantraBioTimeSDK
             this.grpUserDataManagement = new System.Windows.Forms.GroupBox();
             this.tabAddUser = new System.Windows.Forms.TabControl();
             this.tabAddUserMain = new System.Windows.Forms.TabPage();
+            this.grpValidDate = new System.Windows.Forms.GroupBox();
+            this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtUID = new System.Windows.Forms.TextBox();
+            this.btn_ReactiveUser = new System.Windows.Forms.Button();
+            this.btn_DeleteExpiredSubscription = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.errorEmail = new System.Windows.Forms.Label();
             this.txtDOB = new System.Windows.Forms.DateTimePicker();
@@ -61,6 +67,7 @@ namespace MantraBioTimeSDK
             this.txtUName = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnSetUserInfo = new System.Windows.Forms.Button();
             this.cbUserEnable = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnGetUserInfo = new System.Windows.Forms.Button();
@@ -97,13 +104,18 @@ namespace MantraBioTimeSDK
             this.txtDBDUserID = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabAction = new System.Windows.Forms.TabPage();
-            this.grpValidDate = new System.Windows.Forms.GroupBox();
-            this.btnDeleteUser = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtUID = new System.Windows.Forms.TextBox();
-            this.btn_ReactiveUser = new System.Windows.Forms.Button();
-            this.btn_DeleteExpiredSubscription = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtDiscount = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.cbMembershipType2 = new System.Windows.Forms.ComboBox();
+            this.cbMode = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtmobileNo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -112,18 +124,17 @@ namespace MantraBioTimeSDK
             this.txtUserID2 = new System.Windows.Forms.TextBox();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
             this.dtEndDate = new System.Windows.Forms.DateTimePicker();
-            this.btnSetUserInfo = new System.Windows.Forms.Button();
             this.pnlUserDataManagement.SuspendLayout();
             this.grpUserDataManagement.SuspendLayout();
             this.tabAddUser.SuspendLayout();
             this.tabAddUserMain.SuspendLayout();
+            this.grpValidDate.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabMainUserEnrollData.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabAction.SuspendLayout();
-            this.grpValidDate.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -163,7 +174,7 @@ namespace MantraBioTimeSDK
             // 
             // tabAddUserMain
             // 
-            this.tabAddUserMain.Controls.Add(this.groupBox5);
+            this.tabAddUserMain.Controls.Add(this.grpValidDate);
             this.tabAddUserMain.Controls.Add(this.groupBox4);
             this.tabAddUserMain.Controls.Add(this.groupBox3);
             this.tabAddUserMain.Location = new System.Drawing.Point(4, 23);
@@ -173,6 +184,74 @@ namespace MantraBioTimeSDK
             this.tabAddUserMain.TabIndex = 2;
             this.tabAddUserMain.Text = "Add User";
             this.tabAddUserMain.UseVisualStyleBackColor = true;
+            // 
+            // grpValidDate
+            // 
+            this.grpValidDate.Controls.Add(this.btnDeleteUser);
+            this.grpValidDate.Controls.Add(this.label2);
+            this.grpValidDate.Controls.Add(this.txtUID);
+            this.grpValidDate.Controls.Add(this.btn_ReactiveUser);
+            this.grpValidDate.Controls.Add(this.btn_DeleteExpiredSubscription);
+            this.grpValidDate.Location = new System.Drawing.Point(514, 258);
+            this.grpValidDate.Name = "grpValidDate";
+            this.grpValidDate.Size = new System.Drawing.Size(393, 134);
+            this.grpValidDate.TabIndex = 87;
+            this.grpValidDate.TabStop = false;
+            this.grpValidDate.Text = "Actions";
+            // 
+            // btnDeleteUser
+            // 
+            this.btnDeleteUser.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteUser.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDeleteUser.Location = new System.Drawing.Point(201, 70);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(121, 25);
+            this.btnDeleteUser.TabIndex = 99;
+            this.btnDeleteUser.Text = "Delete";
+            this.btnDeleteUser.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(66, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.TabIndex = 98;
+            this.label2.Text = "UserId";
+            // 
+            // txtUID
+            // 
+            this.txtUID.Location = new System.Drawing.Point(68, 41);
+            this.txtUID.Name = "txtUID";
+            this.txtUID.Size = new System.Drawing.Size(254, 22);
+            this.txtUID.TabIndex = 97;
+            // 
+            // btn_ReactiveUser
+            // 
+            this.btn_ReactiveUser.BackColor = System.Drawing.Color.YellowGreen;
+            this.btn_ReactiveUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ReactiveUser.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_ReactiveUser.Location = new System.Drawing.Point(68, 69);
+            this.btn_ReactiveUser.Name = "btn_ReactiveUser";
+            this.btn_ReactiveUser.Size = new System.Drawing.Size(121, 25);
+            this.btn_ReactiveUser.TabIndex = 96;
+            this.btn_ReactiveUser.Text = "Re-Active";
+            this.btn_ReactiveUser.UseVisualStyleBackColor = false;
+            // 
+            // btn_DeleteExpiredSubscription
+            // 
+            this.btn_DeleteExpiredSubscription.BackColor = System.Drawing.Color.SteelBlue;
+            this.btn_DeleteExpiredSubscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_DeleteExpiredSubscription.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_DeleteExpiredSubscription.Location = new System.Drawing.Point(69, 99);
+            this.btn_DeleteExpiredSubscription.Name = "btn_DeleteExpiredSubscription";
+            this.btn_DeleteExpiredSubscription.Size = new System.Drawing.Size(254, 25);
+            this.btn_DeleteExpiredSubscription.TabIndex = 95;
+            this.btn_DeleteExpiredSubscription.Text = "Disable All Expired Subscription";
+            this.btn_DeleteExpiredSubscription.UseVisualStyleBackColor = false;
             // 
             // groupBox4
             // 
@@ -465,6 +544,20 @@ namespace MantraBioTimeSDK
             this.groupBox3.TabIndex = 83;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Upload the Card Number(part of users information)";
+            // 
+            // btnSetUserInfo
+            // 
+            this.btnSetUserInfo.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSetUserInfo.FlatAppearance.BorderSize = 0;
+            this.btnSetUserInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetUserInfo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetUserInfo.Location = new System.Drawing.Point(169, 212);
+            this.btnSetUserInfo.Name = "btnSetUserInfo";
+            this.btnSetUserInfo.Size = new System.Drawing.Size(97, 23);
+            this.btnSetUserInfo.TabIndex = 74;
+            this.btnSetUserInfo.Text = "SetUserInfo";
+            this.btnSetUserInfo.UseVisualStyleBackColor = false;
+            this.btnSetUserInfo.Click += new System.EventHandler(this.btnSetUserInfo_Click_1);
             // 
             // cbUserEnable
             // 
@@ -813,7 +906,7 @@ namespace MantraBioTimeSDK
             // 
             // tabAction
             // 
-            this.tabAction.Controls.Add(this.grpValidDate);
+            this.tabAction.Controls.Add(this.groupBox5);
             this.tabAction.Location = new System.Drawing.Point(4, 23);
             this.tabAction.Name = "tabAction";
             this.tabAction.Padding = new System.Windows.Forms.Padding(3);
@@ -822,79 +915,19 @@ namespace MantraBioTimeSDK
             this.tabAction.Text = "Action";
             this.tabAction.UseVisualStyleBackColor = true;
             // 
-            // grpValidDate
-            // 
-            this.grpValidDate.Controls.Add(this.btnDeleteUser);
-            this.grpValidDate.Controls.Add(this.label2);
-            this.grpValidDate.Controls.Add(this.txtUID);
-            this.grpValidDate.Controls.Add(this.btn_ReactiveUser);
-            this.grpValidDate.Controls.Add(this.btn_DeleteExpiredSubscription);
-            this.grpValidDate.Location = new System.Drawing.Point(254, 129);
-            this.grpValidDate.Name = "grpValidDate";
-            this.grpValidDate.Size = new System.Drawing.Size(393, 155);
-            this.grpValidDate.TabIndex = 84;
-            this.grpValidDate.TabStop = false;
-            this.grpValidDate.Text = "Actions";
-            // 
-            // btnDeleteUser
-            // 
-            this.btnDeleteUser.BackColor = System.Drawing.Color.Red;
-            this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteUser.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDeleteUser.Location = new System.Drawing.Point(201, 84);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(121, 25);
-            this.btnDeleteUser.TabIndex = 99;
-            this.btnDeleteUser.Text = "Delete";
-            this.btnDeleteUser.UseVisualStyleBackColor = false;
-            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(66, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
-            this.label2.TabIndex = 98;
-            this.label2.Text = "UserId";
-            // 
-            // txtUID
-            // 
-            this.txtUID.Location = new System.Drawing.Point(68, 53);
-            this.txtUID.Name = "txtUID";
-            this.txtUID.Size = new System.Drawing.Size(254, 22);
-            this.txtUID.TabIndex = 97;
-            // 
-            // btn_ReactiveUser
-            // 
-            this.btn_ReactiveUser.BackColor = System.Drawing.Color.YellowGreen;
-            this.btn_ReactiveUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ReactiveUser.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.btn_ReactiveUser.Location = new System.Drawing.Point(68, 84);
-            this.btn_ReactiveUser.Name = "btn_ReactiveUser";
-            this.btn_ReactiveUser.Size = new System.Drawing.Size(121, 25);
-            this.btn_ReactiveUser.TabIndex = 96;
-            this.btn_ReactiveUser.Text = "Re-Active";
-            this.btn_ReactiveUser.UseVisualStyleBackColor = false;
-            this.btn_ReactiveUser.Click += new System.EventHandler(this.btn_ReactiveUser_Click);
-            // 
-            // btn_DeleteExpiredSubscription
-            // 
-            this.btn_DeleteExpiredSubscription.BackColor = System.Drawing.Color.SteelBlue;
-            this.btn_DeleteExpiredSubscription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_DeleteExpiredSubscription.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold);
-            this.btn_DeleteExpiredSubscription.Location = new System.Drawing.Point(68, 115);
-            this.btn_DeleteExpiredSubscription.Name = "btn_DeleteExpiredSubscription";
-            this.btn_DeleteExpiredSubscription.Size = new System.Drawing.Size(254, 25);
-            this.btn_DeleteExpiredSubscription.TabIndex = 95;
-            this.btn_DeleteExpiredSubscription.Text = "Disable All Expired Subscription";
-            this.btn_DeleteExpiredSubscription.UseVisualStyleBackColor = false;
-            this.btn_DeleteExpiredSubscription.Click += new System.EventHandler(this.btn_DeleteExpiredSubscription_Click);
-            // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label28);
+            this.groupBox5.Controls.Add(this.txtDiscount);
+            this.groupBox5.Controls.Add(this.label27);
+            this.groupBox5.Controls.Add(this.cbMembershipType2);
+            this.groupBox5.Controls.Add(this.cbMode);
+            this.groupBox5.Controls.Add(this.label26);
+            this.groupBox5.Controls.Add(this.label25);
+            this.groupBox5.Controls.Add(this.txtAmount);
+            this.groupBox5.Controls.Add(this.label24);
+            this.groupBox5.Controls.Add(this.label23);
+            this.groupBox5.Controls.Add(this.txtmobileNo);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.label8);
@@ -903,12 +936,125 @@ namespace MantraBioTimeSDK
             this.groupBox5.Controls.Add(this.txtUserID2);
             this.groupBox5.Controls.Add(this.dtStartDate);
             this.groupBox5.Controls.Add(this.dtEndDate);
-            this.groupBox5.Location = new System.Drawing.Point(503, 255);
+            this.groupBox5.Location = new System.Drawing.Point(14, 15);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(408, 137);
-            this.groupBox5.TabIndex = 87;
+            this.groupBox5.Size = new System.Drawing.Size(442, 363);
+            this.groupBox5.TabIndex = 88;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Valid Date";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label28.Location = new System.Drawing.Point(32, 229);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(61, 14);
+            this.label28.TabIndex = 120;
+            this.label28.Text = "Discount";
+            // 
+            // txtDiscount
+            // 
+            this.txtDiscount.Location = new System.Drawing.Point(35, 255);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Size = new System.Drawing.Size(174, 22);
+            this.txtDiscount.TabIndex = 119;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label27.Location = new System.Drawing.Point(219, 229);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(116, 14);
+            this.label27.TabIndex = 118;
+            this.label27.Text = "Membership Type";
+            // 
+            // cbMembershipType2
+            // 
+            this.cbMembershipType2.AutoCompleteCustomSource.AddRange(new string[] {
+            "Cash",
+            "UPI",
+            "Bank"});
+            this.cbMembershipType2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMembershipType2.FormattingEnabled = true;
+            this.cbMembershipType2.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.cbMembershipType2.Location = new System.Drawing.Point(222, 255);
+            this.cbMembershipType2.Name = "cbMembershipType2";
+            this.cbMembershipType2.Size = new System.Drawing.Size(175, 22);
+            this.cbMembershipType2.TabIndex = 117;
+            // 
+            // cbMode
+            // 
+            this.cbMode.AutoCompleteCustomSource.AddRange(new string[] {
+            "Cash",
+            "UPI",
+            "Bank"});
+            this.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMode.FormattingEnabled = true;
+            this.cbMode.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.cbMode.Location = new System.Drawing.Point(222, 194);
+            this.cbMode.Name = "cbMode";
+            this.cbMode.Size = new System.Drawing.Size(175, 22);
+            this.cbMode.TabIndex = 116;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label26.Location = new System.Drawing.Point(219, 164);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(41, 14);
+            this.label26.TabIndex = 115;
+            this.label26.Text = "Mode";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label25.Location = new System.Drawing.Point(32, 164);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(55, 14);
+            this.label25.TabIndex = 113;
+            this.label25.Text = "Amount";
+            // 
+            // txtAmount
+            // 
+            this.txtAmount.Location = new System.Drawing.Point(35, 194);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(174, 22);
+            this.txtAmount.TabIndex = 112;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label24.Location = new System.Drawing.Point(139, 28);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(25, 14);
+            this.label24.TabIndex = 111;
+            this.label24.Text = "OR";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.label23.Location = new System.Drawing.Point(219, 28);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(68, 14);
+            this.label23.TabIndex = 110;
+            this.label23.Text = "Mobile No";
+            // 
+            // txtmobileNo
+            // 
+            this.txtmobileNo.Location = new System.Drawing.Point(222, 60);
+            this.txtmobileNo.Name = "txtmobileNo";
+            this.txtmobileNo.Size = new System.Drawing.Size(175, 22);
+            this.txtmobileNo.TabIndex = 109;
             // 
             // label6
             // 
@@ -924,7 +1070,7 @@ namespace MantraBioTimeSDK
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label7.Location = new System.Drawing.Point(223, 60);
+            this.label7.Location = new System.Drawing.Point(222, 97);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 14);
             this.label7.TabIndex = 107;
@@ -934,7 +1080,7 @@ namespace MantraBioTimeSDK
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label8.Location = new System.Drawing.Point(18, 60);
+            this.label8.Location = new System.Drawing.Point(32, 97);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 14);
             this.label8.TabIndex = 106;
@@ -946,7 +1092,7 @@ namespace MantraBioTimeSDK
             this.btnSetUserPeriod.FlatAppearance.BorderSize = 0;
             this.btnSetUserPeriod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSetUserPeriod.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetUserPeriod.Location = new System.Drawing.Point(165, 96);
+            this.btnSetUserPeriod.Location = new System.Drawing.Point(162, 324);
             this.btnSetUserPeriod.Name = "btnSetUserPeriod";
             this.btnSetUserPeriod.Size = new System.Drawing.Size(112, 23);
             this.btnSetUserPeriod.TabIndex = 105;
@@ -960,28 +1106,27 @@ namespace MantraBioTimeSDK
             this.btnGetUserPeriod.FlatAppearance.BorderSize = 0;
             this.btnGetUserPeriod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetUserPeriod.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetUserPeriod.Location = new System.Drawing.Point(288, 96);
+            this.btnGetUserPeriod.Location = new System.Drawing.Point(285, 324);
             this.btnGetUserPeriod.Name = "btnGetUserPeriod";
             this.btnGetUserPeriod.Size = new System.Drawing.Size(112, 23);
             this.btnGetUserPeriod.TabIndex = 104;
             this.btnGetUserPeriod.Text = "GetUserPeriod";
             this.btnGetUserPeriod.UseVisualStyleBackColor = false;
-            this.btnGetUserPeriod.Click += new System.EventHandler(this.btnGetUserPeriod_Click);
             // 
             // txtUserID2
             // 
-            this.txtUserID2.Location = new System.Drawing.Point(89, 25);
+            this.txtUserID2.Location = new System.Drawing.Point(35, 60);
             this.txtUserID2.Name = "txtUserID2";
-            this.txtUserID2.Size = new System.Drawing.Size(308, 22);
+            this.txtUserID2.Size = new System.Drawing.Size(174, 22);
             this.txtUserID2.TabIndex = 84;
             // 
             // dtStartDate
             // 
             this.dtStartDate.CustomFormat = "dd-MMM-yyyy";
             this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtStartDate.Location = new System.Drawing.Point(89, 56);
+            this.dtStartDate.Location = new System.Drawing.Point(35, 126);
             this.dtStartDate.Name = "dtStartDate";
-            this.dtStartDate.Size = new System.Drawing.Size(120, 22);
+            this.dtStartDate.Size = new System.Drawing.Size(174, 22);
             this.dtStartDate.TabIndex = 102;
             this.dtStartDate.Value = new System.DateTime(2015, 7, 19, 12, 24, 13, 0);
             // 
@@ -989,24 +1134,10 @@ namespace MantraBioTimeSDK
             // 
             this.dtEndDate.CustomFormat = "dd-MMM-yyyy";
             this.dtEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEndDate.Location = new System.Drawing.Point(277, 57);
+            this.dtEndDate.Location = new System.Drawing.Point(222, 126);
             this.dtEndDate.Name = "dtEndDate";
-            this.dtEndDate.Size = new System.Drawing.Size(120, 22);
+            this.dtEndDate.Size = new System.Drawing.Size(172, 22);
             this.dtEndDate.TabIndex = 103;
-            // 
-            // btnSetUserInfo
-            // 
-            this.btnSetUserInfo.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnSetUserInfo.FlatAppearance.BorderSize = 0;
-            this.btnSetUserInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetUserInfo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetUserInfo.Location = new System.Drawing.Point(169, 212);
-            this.btnSetUserInfo.Name = "btnSetUserInfo";
-            this.btnSetUserInfo.Size = new System.Drawing.Size(97, 23);
-            this.btnSetUserInfo.TabIndex = 74;
-            this.btnSetUserInfo.Text = "SetUserInfo";
-            this.btnSetUserInfo.UseVisualStyleBackColor = false;
-            this.btnSetUserInfo.Click += new System.EventHandler(this.btnSetUserInfo_Click_1);
             // 
             // FrmUserDataManagement
             // 
@@ -1024,6 +1155,8 @@ namespace MantraBioTimeSDK
             this.grpUserDataManagement.ResumeLayout(false);
             this.tabAddUser.ResumeLayout(false);
             this.tabAddUserMain.ResumeLayout(false);
+            this.grpValidDate.ResumeLayout(false);
+            this.grpValidDate.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -1033,8 +1166,6 @@ namespace MantraBioTimeSDK
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabAction.ResumeLayout(false);
-            this.grpValidDate.ResumeLayout(false);
-            this.grpValidDate.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
@@ -1110,13 +1241,16 @@ namespace MantraBioTimeSDK
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label errorEmail;
         private System.Windows.Forms.TabPage tabAction;
+        private System.Windows.Forms.Button btnSetUserInfo;
         private System.Windows.Forms.GroupBox grpValidDate;
+        private System.Windows.Forms.Button btnDeleteUser;
+        private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox txtUID;
         private System.Windows.Forms.Button btn_ReactiveUser;
         public System.Windows.Forms.Button btn_DeleteExpiredSubscription;
-        private System.Windows.Forms.Button btnDeleteUser;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtmobileNo;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -1125,6 +1259,14 @@ namespace MantraBioTimeSDK
         private System.Windows.Forms.TextBox txtUserID2;
         private System.Windows.Forms.DateTimePicker dtStartDate;
         private System.Windows.Forms.DateTimePicker dtEndDate;
-        private System.Windows.Forms.Button btnSetUserInfo;
+        private System.Windows.Forms.ComboBox cbMode;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txtAmount;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox txtDiscount;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox cbMembershipType2;
     }
 }

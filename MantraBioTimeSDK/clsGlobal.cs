@@ -66,12 +66,19 @@ namespace MantraBioTimeSDK
         public string name { get; set; }
         public string phoneNumber { get; set; }
     }
-
-    public class APIResponse<T>
+    public class APIResponse
     {
         public int statusCode { get; set; }
         public string responseText { get; set; }
+    }
+    public class APIResponse<T>: APIResponse
+    {
         public T result { get; set; }
+    }
+
+    public class CollectFeeResponse : APIResponse
+    {
+        public int userId { get; set; }
     }
 
     public class subscriptionbyuserResponse
