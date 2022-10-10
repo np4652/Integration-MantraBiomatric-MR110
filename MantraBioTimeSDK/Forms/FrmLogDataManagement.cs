@@ -1,4 +1,5 @@
 ﻿using MantraBioTimeDLL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -155,5 +156,10 @@ namespace MantraBioTimeSDK
 
         #endregion
 
+        private void btnSyncData_Click(object sender, EventArgs e)
+        {
+            var helper = new Helpers();
+            helper.syncData();
+        }
     }
 }

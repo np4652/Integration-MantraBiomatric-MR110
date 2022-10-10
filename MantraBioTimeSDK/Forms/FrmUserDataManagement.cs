@@ -36,22 +36,7 @@ namespace MantraBioTimeSDK
                 this.cbPrivilege.Items.Add("5-Undefine");
                 this.cbUserEnable.SelectedIndex = 0;
 
-                this.cbMembershipType.Items.Clear();
-                this.cbMembershipType.Items.Add("Monthly");
-                this.cbMembershipType.Items.Add("Quarterly");
-                this.cbMembershipType.Items.Add("HalfYearly");
-                this.cbMembershipType.Items.Add("Yearly");
-                this.cbMembershipType.SelectedIndex = 0;
 
-                this.cbMaritalStatus.Items.Clear();
-                this.cbMaritalStatus.Items.Add("Single");
-                this.cbMaritalStatus.Items.Add("Married");
-                this.cbMaritalStatus.SelectedIndex = 1;
-
-                this.cbGender.Items.Clear();
-                this.cbGender.Items.Add("Male");
-                this.cbGender.Items.Add("Female");
-                this.cbGender.SelectedIndex = 0;
             }
             else if (clsGlobal.DeviceType == 2)
             {
@@ -64,6 +49,37 @@ namespace MantraBioTimeSDK
                 this.cbPrivilege.Items.Add("2-Manager");
                 this.cbPrivilege.SelectedIndex = 0;
             }
+
+            this.cbMembershipType.Items.Clear();
+            this.cbMembershipType.Items.Add("Monthly");
+            this.cbMembershipType.Items.Add("Quarterly");
+            this.cbMembershipType.Items.Add("HalfYearly");
+            this.cbMembershipType.Items.Add("Yearly");
+            this.cbMembershipType.SelectedIndex = 0;
+
+            this.cbMembershipType2.Items.Clear();
+            this.cbMembershipType2.Items.Add("Monthly");
+            this.cbMembershipType2.Items.Add("Quarterly");
+            this.cbMembershipType2.Items.Add("HalfYearly");
+            this.cbMembershipType2.Items.Add("Yearly");
+            this.cbMembershipType2.SelectedIndex = 0;
+
+            this.cbMaritalStatus.Items.Clear();
+            this.cbMaritalStatus.Items.Add("Single");
+            this.cbMaritalStatus.Items.Add("Married");
+            this.cbMaritalStatus.SelectedIndex = 1;
+
+            this.cbGender.Items.Clear();
+            this.cbGender.Items.Add("Male");
+            this.cbGender.Items.Add("Female");
+            this.cbGender.SelectedIndex = 0;
+
+            this.cbMode.Items.Clear();
+            this.cbMode.Items.Add("Cash");
+            this.cbMode.Items.Add("UPI");
+            this.cbMode.Items.Add("Bank");
+            this.cbMode.SelectedIndex = 0;
+
         }
 
         #region "Button Events"
@@ -109,95 +125,70 @@ namespace MantraBioTimeSDK
 
         private void btnSetUserInfo_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            int _flgVal = 0;
-            try
-            {
-                _flgVal = MantraBioTime.SetUserInfo(clsGlobal.DeviceType, txtUserID.Text.Trim(), txtName.Text.Trim(), txtPassword.Text.Trim(), txtCardnumber.Text.Trim(), cbPrivilege.SelectedIndex.ToString(), Convert.ToBoolean(cbUserEnable.SelectedIndex));
-                if (_flgVal == 0)
-                {
-                    MantraBioTimeSDK.theForm.EventLogs.Items.Add("Set User Information Successfully!");
-                    MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
-                }
-                else
-                {
-                    MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
-                    MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
-                }
 
-            }
-            catch (Exception Ex)
-            {
-                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(Ex.Message);
-                MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
         }
 
-        private void btGetUserVerifyStyle_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-            int _flgVal = 0;
-            try
-            {
-                //MantraBioTimeSDK.theForm.EventLogs.Items.Add("Get User Verify Mode"); // like Fin + card || Fin + Pwd || Face + card etc. 
-                int iVerifyStyle = 0;
-                _flgVal = MantraBioTime.GetUserVerifyStyle(clsGlobal.DeviceType, txtUserID3.Text.Trim(), ref iVerifyStyle);
-                if (_flgVal == 0)
-                {
-                    GetUserVerifyStyle(ref iVerifyStyle);
-                    MantraBioTimeSDK.theForm.EventLogs.Items.Add("Get User Verify Mode Successfully!");
-                    MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
-                }
-                else
-                {
-                    //GetUserVerifyStyle(ref iVerifyStyle);
-                    MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
-                    MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
-                }
-            }
-            catch (Exception Ex)
-            {
-                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(Ex.Message);
-                MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
+        //private void btGetUserVerifyStyle_Click(object sender, EventArgs e)
+        //{
+        //    Cursor = Cursors.WaitCursor;
+        //    int _flgVal = 0;
+        //    try
+        //    {
+        //        //MantraBioTimeSDK.theForm.EventLogs.Items.Add("Get User Verify Mode"); // like Fin + card || Fin + Pwd || Face + card etc. 
+        //        int iVerifyStyle = 0;
+        //        _flgVal = MantraBioTime.GetUserVerifyStyle(clsGlobal.DeviceType, txtUserID3.Text.Trim(), ref iVerifyStyle);
+        //        if (_flgVal == 0)
+        //        {
+        //            GetUserVerifyStyle(ref iVerifyStyle);
+        //            MantraBioTimeSDK.theForm.EventLogs.Items.Add("Get User Verify Mode Successfully!");
+        //            MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
+        //        }
+        //        else
+        //        {
+        //            //GetUserVerifyStyle(ref iVerifyStyle);
+        //            MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
+        //            MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+        //        }
+        //    }
+        //    catch (Exception Ex)
+        //    {
+        //        MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(Ex.Message);
+        //        MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+        //    }
+        //    finally
+        //    {
+        //        Cursor = Cursors.Default;
+        //    }
+        //}
 
-        private void btSetUserVerifyStyl_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-            int _flgVal = 0;
-            try
-            {
-                _flgVal = MantraBioTime.SetUserVerifyStyle(clsGlobal.DeviceType, txtUserID3.Text.Trim(), cbVerifyStyle.Text);
-                if (_flgVal == 0)
-                {
-                    MantraBioTimeSDK.theForm.EventLogs.Items.Add("Set User Verify Mode Successfully!");
-                    MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
-                }
-                else
-                {
-                    MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
-                    MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
-                }
-            }
-            catch (Exception Ex)
-            {
-                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(Ex.Message);
-                MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
-            }
-            finally
-            {
-                Cursor = Cursors.Default;
-            }
-        }
+        //private void btSetUserVerifyStyl_Click(object sender, EventArgs e)
+        //{
+        //    Cursor = Cursors.WaitCursor;
+        //    int _flgVal = 0;
+        //    try
+        //    {
+        //        _flgVal = MantraBioTime.SetUserVerifyStyle(clsGlobal.DeviceType, txtUserID3.Text.Trim(), cbVerifyStyle.Text);
+        //        if (_flgVal == 0)
+        //        {
+        //            MantraBioTimeSDK.theForm.EventLogs.Items.Add("Set User Verify Mode Successfully!");
+        //            MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
+        //        }
+        //        else
+        //        {
+        //            MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
+        //            MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+        //        }
+        //    }
+        //    catch (Exception Ex)
+        //    {
+        //        MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(Ex.Message);
+        //        MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+        //    }
+        //    finally
+        //    {
+        //        Cursor = Cursors.Default;
+        //    }
+        //}
 
         private void btnExitEnroll_Click(object sender, EventArgs e)
         {
@@ -273,7 +264,6 @@ namespace MantraBioTimeSDK
             {
                 DataTable tblData = new DataTable();
                 tblData = SqliteDB.SelectUserDataByID(Convert.ToInt64(txtDBDUserID.Text.Trim()));
-
                 _flgVal = MantraBioTime.SetUserEnrollData(clsGlobal.DeviceType, txtDBDUserID.Text.Trim(), tblData);
                 if (_flgVal == 0)
                 {
@@ -449,28 +439,28 @@ namespace MantraBioTimeSDK
         }
 
 
-        private void GetUserVerifyStyle(ref int iVerifyStyle)
-        {
-            switch (iVerifyStyle)
-            {
-                case 0: cbVerifyStyle.Text = "Group Verify"; break;
-                case 128: cbVerifyStyle.Text = "FP/PW/RF"; break;
-                case 129: cbVerifyStyle.Text = "FP"; break;
-                case 130: cbVerifyStyle.Text = "PIN"; break;
-                case 131: cbVerifyStyle.Text = "PW"; break;
-                case 132: cbVerifyStyle.Text = "RF"; break;
-                case 133: cbVerifyStyle.Text = "FP/PW"; break;
-                case 134: cbVerifyStyle.Text = "FP/RF"; break;
-                case 135: cbVerifyStyle.Text = "PW/RF"; break;
-                case 136: cbVerifyStyle.Text = "PIN&FP"; break;
-                case 137: cbVerifyStyle.Text = "FP&PW"; break;
-                case 138: cbVerifyStyle.Text = "FP&RF"; break;
-                case 139: cbVerifyStyle.Text = "PW&RF"; break;
-                case 140: cbVerifyStyle.Text = "FP&PW&RF"; break;
-                case 141: cbVerifyStyle.Text = "PIN&FP&PW"; break;
-                case 142: cbVerifyStyle.Text = "FP&RF/PIN"; break;
-            }
-        }
+        //private void GetUserVerifyStyle(ref int iVerifyStyle)
+        //{
+        //    switch (iVerifyStyle)
+        //    {
+        //        case 0: cbVerifyStyle.Text = "Group Verify"; break;
+        //        case 128: cbVerifyStyle.Text = "FP/PW/RF"; break;
+        //        case 129: cbVerifyStyle.Text = "FP"; break;
+        //        case 130: cbVerifyStyle.Text = "PIN"; break;
+        //        case 131: cbVerifyStyle.Text = "PW"; break;
+        //        case 132: cbVerifyStyle.Text = "RF"; break;
+        //        case 133: cbVerifyStyle.Text = "FP/PW"; break;
+        //        case 134: cbVerifyStyle.Text = "FP/RF"; break;
+        //        case 135: cbVerifyStyle.Text = "PW/RF"; break;
+        //        case 136: cbVerifyStyle.Text = "PIN&FP"; break;
+        //        case 137: cbVerifyStyle.Text = "FP&PW"; break;
+        //        case 138: cbVerifyStyle.Text = "FP&RF"; break;
+        //        case 139: cbVerifyStyle.Text = "PW&RF"; break;
+        //        case 140: cbVerifyStyle.Text = "FP&PW&RF"; break;
+        //        case 141: cbVerifyStyle.Text = "PIN&FP&PW"; break;
+        //        case 142: cbVerifyStyle.Text = "FP&RF/PIN"; break;
+        //    }
+        //}
 
         private void GetUserEnrollData(ref List<DemographicsList> DList, ref List<BiometricsList> BList)
         {
@@ -622,54 +612,53 @@ namespace MantraBioTimeSDK
 
         private void btn_DeleteExpiredSubscription_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string apiData = new WebClient().DownloadString("https://themusclesbargym.in/api/user/subscriptionexpired");
-                var data = JsonConvert.DeserializeObject<List<DisableUsers>>(apiData);
-                foreach (var user in data)
-                {
-                    MantraBioTime.DeleteEnrollData(clsGlobal.DeviceType, user.bioid.ToString());
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
+            var helper = new Helpers();
+            helper.DeleteExpiredSubscription();
         }
 
         private void btn_ReactiveUser_Click(object sender, EventArgs e)
         {
-            try
+            if (clsGlobal.IsConnect)
             {
-                bool isValid = true;
-                if (string.IsNullOrEmpty(txtUID.Text))
+
+
+                try
                 {
-                    MantraBioTimeSDK.theForm.lblMsg.Text = "*Please enter user id.";
-                    MantraBioTimeSDK.theForm.lblMsg.ForeColor = Color.Red;
-                    isValid = false;
+                    bool isValid = true;
+                    if (string.IsNullOrEmpty(txtUID.Text))
+                    {
+                        MantraBioTimeSDK.theForm.lblMsg.Text = "*Please enter user id.";
+                        MantraBioTimeSDK.theForm.lblMsg.ForeColor = Color.Red;
+                        isValid = false;
+                    }
+                    if (isValid)
+                    {
+                        StringBuilder sb = new StringBuilder("https://themusclesbargym.in/api/subscriptionbyuser?");
+                        sb.Append($"userId={txtUID.Text}");
+                        string apiData = new WebClient().DownloadString(sb.ToString());
+                        var response = JsonConvert.DeserializeObject<APIResponse<subscriptionbyuserResponse>>(apiData);
+                        if (response != null && response.statusCode == 1 && response.result != null)
+                            AddUser(new UserDetail
+                            {
+                                UserId = Convert.ToInt32(txtUID.Text),
+                                fIndex = 0,
+                                Name = response.result.name,
+                                Password = "",
+                                CardNumber = "",
+                                IsUserEnable = true,
+                                Privilege = "0"
+                            });
+                    }
                 }
-                if (isValid)
+                catch (Exception ex)
                 {
-                    StringBuilder sb = new StringBuilder("https://themusclesbargym.in/api/subscriptionbyuser?");
-                    sb.Append($"userId={txtUID.Text}");
-                    string apiData = new WebClient().DownloadString(sb.ToString());
-                    var response = JsonConvert.DeserializeObject<APIResponse<subscriptionbyuserResponse>>(apiData);
-                    if (response != null && response.statusCode == 1 && response.result != null)
-                        AddUser(new UserDetail
-                        {
-                            UserId = Convert.ToInt32(txtUID.Text),
-                            fIndex = 0,
-                            Name = response.result.name,
-                            Password = "",
-                            CardNumber = "",
-                            IsUserEnable = true,
-                            Privilege = "0"
-                        });
+                    MantraBioTimeSDK.theForm.ErrorLogs.Items.Add("Something went wrong.Please try after sometime.");
+                    MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add("Something went wrong.Please try after sometime.");
+                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add("Please connect device first");
                 MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
             }
         }
@@ -696,6 +685,27 @@ namespace MantraBioTimeSDK
                         MantraBioTimeSDK.theForm.EventLogs.Items.Add("User Add Successfully!");
                         MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
                     }
+                    else
+                    {
+                        DataTable tblData = new DataTable();
+                        tblData = SqliteDB.SelectUserDataByID(userDetail.UserId);
+                        if (tblData.Rows.Count > 0)
+                        {
+                            tblData.Rows[0]["UserName"] = userDetail.Name;
+                            tblData.Rows[0]["IsEnabled"] = false;
+                            _flgVal = MantraBioTime.SetUserEnrollData(clsGlobal.DeviceType, userDetail.UserId.ToString(), tblData);
+                            if (_flgVal == 0)
+                            {
+                                MantraBioTimeSDK.theForm.EventLogs.Items.Add("Set User EnrollData Successfully!");
+                                MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
+                            }
+                            else
+                            {
+                                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
+                                MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+                            }
+                        }
+                    }
                 }
                 else
                 {
@@ -715,7 +725,7 @@ namespace MantraBioTimeSDK
         }
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
-        {            
+        {
             try
             {
                 bool isValid = true;
@@ -755,7 +765,8 @@ namespace MantraBioTimeSDK
                             mt = 4;
                             break;
                     }
-                    string apiData = PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/register", new
+                    var helper = new Helpers();
+                    string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/register", new
                     {
                         Name = txtUName.Text,
                         PhoneNumber = txtPhoneNumber.Text,
@@ -792,7 +803,6 @@ namespace MantraBioTimeSDK
                             txtUName.Text = string.Empty;
                             txtPhoneNumber.Text = string.Empty;
                             txtEmail.Text = string.Empty;
-                            cbGender.Text = string.Empty;
                             txtAddress.Text = string.Empty;
                             txtAdhaar.Text = string.Empty;
                             txtOccupation.Text = string.Empty;
@@ -883,6 +893,130 @@ namespace MantraBioTimeSDK
             catch (Exception ex)
             {
 
+            }
+        }
+
+        private void btnSetUserPeriod_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            int _flgVal = 0;
+            try
+            {
+                var helper = new Helpers();
+                string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/collecFee", new
+                {
+                    UserId = txtUserID2.Text,
+                    PhoneNumber = txtmobileNo.Text,
+                    Amount = txtAmount.Text,
+                    Discount = txtDiscount.Text,
+                    FromDate = dtStartDate.Text,
+                    ToDate = dtEndDate.Text,
+                    PaymentMode = cbMode.Text,
+                    MembershipType = cbMembershipType2.Text,
+                });
+                var response = JsonConvert.DeserializeObject<CollectFeeResponse>(apiData);
+                if (response.statusCode == 1 && response.userId > 0)
+                {
+                    _flgVal = MantraBioTime.SetUserValidDate(clsGlobal.DeviceType, response.userId.ToString(), dtStartDate.Value.ToString("yyyy-MM-dd"), dtEndDate.Value.ToString("yyyy-MM-dd"));
+                }
+                if (_flgVal == 0)
+                {
+                    MantraBioTimeSDK.theForm.EventLogs.Items.Add("Set User Access Time Period Successfully!");
+                    MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
+                }
+                else
+                {
+                    MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
+                    MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+                }
+            }
+            catch (Exception Ex)
+            {
+                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(Ex.Message);
+                MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void btnGetUserPeriod_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            int _flgVal = 0;
+            try
+            {
+                string FromDate = ""; //yyyy-MMM-dd
+                string ToDate = "";//yyyy-MMM-dd
+                _flgVal = MantraBioTime.GetUserValidDate(clsGlobal.DeviceType, txtUserID2.Text.Trim(), ref FromDate, ref ToDate);
+                if (_flgVal == 0)
+                {
+                    GetUserValidDate(ref FromDate, ref ToDate);
+                    MantraBioTimeSDK.theForm.EventLogs.Items.Add("Get User Access Time Period Successfully!");
+                    MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
+                }
+                else
+                {
+                    GetUserValidDate(ref FromDate, ref ToDate);
+                    MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
+                    MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+                }
+            }
+            catch (Exception Ex)
+            {
+                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(Ex.Message);
+                MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+        private void GetUserValidDate(ref string FromDate, ref string ToDate)
+        {
+            // MantraBioTime.GetUserValidDate(clsGlobal.DeviceType, txtUserID2.Text.Trim(), ref FromDate, ref ToDate);            
+            dtStartDate.Text = FromDate;
+            dtEndDate.Text = ToDate;
+        }
+
+        private void btnSetUserInfo_Click_1(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            int _flgVal = 0;
+            try
+            {
+
+                DataTable tblData = new DataTable();
+                tblData = SqliteDB.SelectUserDataByID(Convert.ToInt64(txtUserID.Text.Trim()));
+                if (tblData.Rows.Count > 0)
+                {
+                    tblData.Rows[0]["UserName"] = txtName.Text.Trim();
+                    tblData.Rows[0]["IsEnabled"] = Convert.ToBoolean(cbUserEnable.SelectedIndex);
+                    tblData.Rows[0]["pwd"] = txtPassword.Text.Trim();
+                    tblData.Rows[0]["card"] = txtCardnumber.Text.Trim();
+                    tblData.Rows[0]["privilege"] = cbPrivilege.SelectedIndex.ToString();
+                    _flgVal = MantraBioTime.SetUserEnrollData(clsGlobal.DeviceType, txtUserID.Text.Trim(), tblData);
+                    if (_flgVal == 0)
+                    {
+                        MantraBioTimeSDK.theForm.EventLogs.Items.Add("Set User EnrollData Successfully!");
+                        MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
+                    }
+                    else
+                    {
+                        MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
+                        MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+                    }
+                }
+            }
+            catch (Exception Ex)
+            {
+                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(Ex.Message);
+                MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
             }
         }
     }

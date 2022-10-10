@@ -186,6 +186,7 @@ namespace MantraBioTimeSDK
             {
                 _FrmTerminal.txtDeviceIP.Text = "192.168.1.224";
                 _FrmTerminal.txtDevicePort.Text = "5005";
+                _FrmTerminal.txtDeviceId.Text = "2";
             }
 
             _FrmTerminal.TopLevel = false;
@@ -196,5 +197,20 @@ namespace MantraBioTimeSDK
             this.Close();
         }
         #endregion
+
+        private void lnkLblBIOFACEMSD1K_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                MantraBioTimeSDK.theForm.lblDeviceName.Text = "BIOFACE-MSD1K";
+                clsGlobal.DeviceType = 2;
+                CallForm();
+            }
+            catch (Exception Ex)
+            {
+                MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(Ex.Message);
+                MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+            }
+        }
     }
 }
