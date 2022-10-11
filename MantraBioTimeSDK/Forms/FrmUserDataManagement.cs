@@ -83,6 +83,7 @@ namespace MantraBioTimeSDK
             this.dtStartDate.CustomFormat = "dd MMM yyyy";
             this.dtEndDate.Format = DateTimePickerFormat.Custom;
             this.dtEndDate.CustomFormat = "dd MMM yyyy";
+            tabAddUser.TabPages[2].Text = "Subscription";
         }
 
         #region "Button Events"
