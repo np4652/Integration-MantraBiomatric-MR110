@@ -21,7 +21,6 @@ namespace MantraBioTimeSDK
         {
             InitializeComponent();
             _MantraBioTimeSDK = _Parent;
-
             tabConnect.TabPages.Remove(tabRS);
             tabConnect.TabPages.Remove(tabUSB);
         }

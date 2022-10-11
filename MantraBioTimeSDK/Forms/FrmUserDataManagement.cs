@@ -79,7 +79,10 @@ namespace MantraBioTimeSDK
             this.cbMode.Items.Add("UPI");
             this.cbMode.Items.Add("Bank");
             this.cbMode.SelectedIndex = 0;
-
+            this.dtStartDate.Format = DateTimePickerFormat.Custom;
+            this.dtStartDate.CustomFormat = "dd MMM yyyy";
+            this.dtEndDate.Format = DateTimePickerFormat.Custom;
+            this.dtEndDate.CustomFormat = "dd MMM yyyy";
         }
 
         #region "Button Events"
@@ -765,47 +768,50 @@ namespace MantraBioTimeSDK
                             mt = 4;
                             break;
                     }
-                    var helper = new Helpers();
-                    string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/register", new
+                    if (clsGlobal.IsConnect)
                     {
-                        Name = txtUName.Text,
-                        PhoneNumber = txtPhoneNumber.Text,
-                        Email = txtEmail.Text,
-                        Gender = cbGender.Text[0],
-                        DOB = txtDOB.Text,
-                        AdharNo = txtAdhaar.Text,
-                        Occupation = txtOccupation.Text,
-                        MaritalStatus = cbMaritalStatus.Text[0],
-                        MembershipType = mt,
-                        Address = txtAddress.Text
-                    });
-                    if (apiData.Contains("validation errors"))
-                    {
-                        MantraBioTimeSDK.theForm.lblMsg.Text = "*One or more validations failed at the API end ";
-                        MantraBioTimeSDK.theForm.lblMsg.ForeColor = Color.Red;
-                    }
-                    else
-                    {
-                        var response = JsonConvert.DeserializeObject<APIResponse<subscriptionbyuserResponse>>(apiData);
-                        if (response != null && response.statusCode == 1 && response.result != null)
+                        var helper = new Helpers();
+                        string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/register", new
                         {
-                            AddUser(new UserDetail
+                            Name = txtUName.Text,
+                            PhoneNumber = txtPhoneNumber.Text,
+                            Email = txtEmail.Text,
+                            Gender = cbGender.Text[0],
+                            DOB = txtDOB.Text,
+                            AdharNo = txtAdhaar.Text,
+                            Occupation = txtOccupation.Text,
+                            MaritalStatus = cbMaritalStatus.Text[0],
+                            MembershipType = mt,
+                            Address = txtAddress.Text
+                        });
+                        if (apiData.Contains("validation errors"))
+                        {
+                            MantraBioTimeSDK.theForm.lblMsg.Text = "*One or more validations failed at the API end ";
+                            MantraBioTimeSDK.theForm.lblMsg.ForeColor = Color.Red;
+                        }
+                        else
+                        {
+                            var response = JsonConvert.DeserializeObject<APIResponse<subscriptionbyuserResponse>>(apiData);
+                            if (response != null && response.statusCode == 1 && response.result != null)
                             {
-                                UserId = response.result.userId,
-                                Privilege = "0",
-                                fIndex = 1,
-                                Password = "",
-                                CardNumber = "",
-                                IsUserEnable = true,
-                                Name = txtUName.Text
-                            });
+                                AddUser(new UserDetail
+                                {
+                                    UserId = response.result.userId,
+                                    Privilege = "0",
+                                    fIndex = 1,
+                                    Password = "",
+                                    CardNumber = "",
+                                    IsUserEnable = true,
+                                    Name = txtUName.Text
+                                });
 
-                            txtUName.Text = string.Empty;
-                            txtPhoneNumber.Text = string.Empty;
-                            txtEmail.Text = string.Empty;
-                            txtAddress.Text = string.Empty;
-                            txtAdhaar.Text = string.Empty;
-                            txtOccupation.Text = string.Empty;
+                                txtUName.Text = string.Empty;
+                                txtPhoneNumber.Text = string.Empty;
+                                txtEmail.Text = string.Empty;
+                                txtAddress.Text = string.Empty;
+                                txtAdhaar.Text = string.Empty;
+                                txtOccupation.Text = string.Empty;
+                            }
                         }
                     }
                 }
@@ -903,31 +909,41 @@ namespace MantraBioTimeSDK
             try
             {
                 var helper = new Helpers();
-                string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/collecFee", new
+                int paymentMode = 0;
+                switch (cbMode.Text)
                 {
-                    UserId = txtUserID2.Text,
-                    PhoneNumber = txtmobileNo.Text,
-                    Amount = txtAmount.Text,
-                    Discount = txtDiscount.Text,
-                    FromDate = dtStartDate.Text,
-                    ToDate = dtEndDate.Text,
-                    PaymentMode = cbMode.Text,
-                    MembershipType = cbMembershipType2.Text,
-                });
-                var response = JsonConvert.DeserializeObject<CollectFeeResponse>(apiData);
-                if (response.statusCode == 1 && response.userId > 0)
-                {
-                    _flgVal = MantraBioTime.SetUserValidDate(clsGlobal.DeviceType, response.userId.ToString(), dtStartDate.Value.ToString("yyyy-MM-dd"), dtEndDate.Value.ToString("yyyy-MM-dd"));
+                    case "Cash": paymentMode = 1; break;
+                    case "Bank": paymentMode = 2; break;
+                    case "UPI": paymentMode = 3; break;
                 }
-                if (_flgVal == 0)
+                if (clsGlobal.IsConnect)
                 {
-                    MantraBioTimeSDK.theForm.EventLogs.Items.Add("Set User Access Time Period Successfully!");
-                    MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
-                }
-                else
-                {
-                    MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
-                    MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+                    string apiData = helper.PostJsonDataUsingHWR("http://localhost:53104/api/user/collectFee", new
+                    {
+                        UserId = string.IsNullOrEmpty(txtUserID2.Text) ? 0 : Convert.ToInt32(txtUserID2.Text),
+                        PhoneNumber = txtmobileNo.Text,
+                        Amount = string.IsNullOrEmpty(txtAmount.Text) ? 0 : Convert.ToDecimal(txtAmount.Text),
+                        Discount = string.IsNullOrEmpty(txtDiscount.Text) ? 0 : Convert.ToDecimal(txtDiscount.Text),
+                        FromDate = dtStartDate.Text,
+                        ToDate = dtEndDate.Text,
+                        PaymentMode = paymentMode,
+                        MembershipType = cbMembershipType2.Text,
+                    });
+                    var response = JsonConvert.DeserializeObject<CollectFeeResponse>(apiData);
+                    if (response.statusCode == 1 && response.userId > 0)
+                    {
+                        _flgVal = MantraBioTime.SetUserValidDate(clsGlobal.DeviceType, response.userId.ToString(), dtStartDate.Value.ToString("yyyy-MM-dd"), dtEndDate.Value.ToString("yyyy-MM-dd"));
+                    }
+                    if (_flgVal == 0)
+                    {
+                        MantraBioTimeSDK.theForm.EventLogs.Items.Add("Set User Access Time Period Successfully!");
+                        MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
+                    }
+                    else
+                    {
+                        MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
+                        MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+                    }
                 }
             }
             catch (Exception Ex)
@@ -1017,6 +1033,55 @@ namespace MantraBioTimeSDK
             finally
             {
                 Cursor = Cursors.Default;
+            }
+        }
+
+        private void txtUserID2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtmobileNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }
