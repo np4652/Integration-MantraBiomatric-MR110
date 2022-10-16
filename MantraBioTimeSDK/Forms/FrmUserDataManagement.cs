@@ -83,7 +83,6 @@ namespace MantraBioTimeSDK
             this.dtStartDate.CustomFormat = "dd MMM yyyy";
             this.dtEndDate.Format = DateTimePickerFormat.Custom;
             this.dtEndDate.CustomFormat = "dd MMM yyyy";
-            tabAddUser.TabPages[2].Text = "Subscription";
         }
 
         #region "Button Events"
@@ -125,11 +124,6 @@ namespace MantraBioTimeSDK
             {
                 Cursor = Cursors.Default;
             }
-        }
-
-        private void btnSetUserInfo_Click(object sender, EventArgs e)
-        {
-
         }
 
         //private void btGetUserVerifyStyle_Click(object sender, EventArgs e)
@@ -707,6 +701,8 @@ namespace MantraBioTimeSDK
                             {
                                 MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
                                 MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+                                lblSuccessMsg.Text = $"Opps,Your User Id is : {userDetail.UserId}.Please enroll manually to machine";
+                                lblSuccessMsg.ForeColor = Color.RosyBrown;
                             }
                         }
                     }
@@ -715,6 +711,8 @@ namespace MantraBioTimeSDK
                 {
                     MantraBioTimeSDK.theForm.ErrorLogs.Items.Add(MantraBioTimeException.MsgCode(_flgVal));
                     MantraBioTimeSDK.theForm.ErrorLogs.TopIndex = MantraBioTimeSDK.theForm.ErrorLogs.Items.Count - 1;
+                    lblSuccessMsg.Text = $"Opps,Your User Id is : {userDetail.UserId}.Please enroll manually to machine";
+                    lblSuccessMsg.ForeColor = Color.RosyBrown;
                 }
             }
             catch (Exception Ex)
@@ -795,6 +793,7 @@ namespace MantraBioTimeSDK
                             var response = JsonConvert.DeserializeObject<APIResponse<subscriptionbyuserResponse>>(apiData);
                             if (response != null && response.statusCode == 1 && response.result != null)
                             {
+                                lblSuccessMsg.Text = $"Well done,User register successfully. User Id is : {response.result.userId}";
                                 AddUser(new UserDetail
                                 {
                                     UserId = response.result.userId,
@@ -806,12 +805,13 @@ namespace MantraBioTimeSDK
                                     Name = txtUName.Text
                                 });
 
-                                txtUName.Text = string.Empty;
-                                txtPhoneNumber.Text = string.Empty;
-                                txtEmail.Text = string.Empty;
-                                txtAddress.Text = string.Empty;
-                                txtAdhaar.Text = string.Empty;
-                                txtOccupation.Text = string.Empty;
+                                //txtUName.Text = string.Empty;
+                                //txtPhoneNumber.Text = string.Empty;
+                                //txtEmail.Text = string.Empty;
+                                //txtAddress.Text = string.Empty;
+                                //txtAdhaar.Text = string.Empty;
+                                //txtOccupation.Text = string.Empty;
+                                ResetUserForm();
                             }
                         }
                     }
@@ -997,7 +997,7 @@ namespace MantraBioTimeSDK
             dtEndDate.Text = ToDate;
         }
 
-        private void btnSetUserInfo_Click_1(object sender, EventArgs e)
+        private void btnSetUserInfo_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
             int _flgVal = 0;
@@ -1084,6 +1084,142 @@ namespace MantraBioTimeSDK
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnSearchById_Click(object sender, EventArgs e)
+        {
+            var helper = new Helpers();
+            var userId = string.IsNullOrEmpty(txtUserID2.Text) ? 0 : Convert.ToInt32(txtUserID2.Text);
+            string apiData = helper.PostJsonDataUsingHWR($"https://themusclesbargym.in/api/user/getById?id={userId}", new
+            {
+
+            });
+            var response = JsonConvert.DeserializeObject<APIResponse<GetUserByIdResponse>>(apiData);
+            if (response.statusCode == 1 && response.result != null)
+            {
+                txtUserID2.Text = response.result.Id.ToString();
+                txtUName.Text = response.result.name;
+                txtPhoneNumber.Text = response.result.phoneNumber;
+                txtEmail.Text = response.result.email;
+                txtDOB.Text = response.result.dob;
+                txtAdhaar.Text = response.result.adharNo;
+                txtOccupation.Text = response.result.occupation;
+                txtAddress.Text = response.result.address;
+                switch (response.result.gender?.ToUpper())
+                {
+                    case "M":
+                        cbGender.SelectedIndex = 0;
+                        break;
+                    case "F":
+                        cbGender.SelectedIndex = 1;
+                        break;
+                }
+                switch (response.result.maritalStatus?.ToUpper())
+                {
+                    case "S":
+                        cbMaritalStatus.SelectedIndex = 0;
+                        break;
+                    case "M":
+                        cbMaritalStatus.SelectedIndex = 1;
+                        break;
+                }
+                cbMembershipType.SelectedIndex = response.result.membershipType > 0 ? response.result.membershipType - 1 : 0;
+                cbMembershipType2.SelectedIndex = response.result.membershipType > 0 ? response.result.membershipType - 1 : 0;
+                txtmobileNo.Text = response.result.phoneNumber;
+                //dtStartDate.Text = DateTime.Now.ToString("dd MMM yyyy");
+                //dtEndDate.Text = DateTime.Now.AddMonths(1).ToString("dd MMM yyyy");
+                //switch (cbMembershipType2.Text?.ToUpper())
+                //{
+                //    case "QUARTELY":
+                //        dtEndDate.Text = DateTime.Now.AddMonths(3).ToString("dd MMM yyyy");
+                //        break;
+                //    case "HALFYEARLY":
+                //        dtEndDate.Text = DateTime.Now.AddMonths(6).ToString("dd MMM yyyy");
+                //        break;
+                //    case "YEARLY":
+                //        dtEndDate.Text = DateTime.Now.AddMonths(12).ToString("dd MMM yyyy");
+                //        break;
+                //}
+
+                var subscriptionDetail = response.result.refreshToken.Split('_');
+                dtStartDate.Text = subscriptionDetail[0];
+                if(subscriptionDetail.Length > 1)
+                {
+                    dtEndDate.Text = subscriptionDetail[1];
+                }
+            }
+            else
+            {
+                ResetUserForm();
+            }
+        }
+
+        private void btnResetUserForm_Click(object sender, EventArgs e)
+        {
+            ResetUserForm();
+        }
+
+
+        private void ResetUserForm()
+        {
+            txtUName.Text = "";
+            txtPhoneNumber.Text = "";
+            txtEmail.Text = "";
+            txtDOB.Text = DateTime.Now.AddYears(-18).ToString("dd MMM yyyy");
+            txtAdhaar.Text = "";
+            txtOccupation.Text = "";
+            txtAddress.Text = "";
+            cbGender.SelectedIndex = 0;
+            cbMaritalStatus.SelectedIndex = 0;
+            cbMembershipType.SelectedIndex = 0;
+            cbMembershipType2.SelectedIndex = 0;
+            txtmobileNo.Text = "";
+            dtStartDate.Text = DateTime.Now.ToString("dd MMM yyyy");
+            dtEndDate.Text = DateTime.Now.AddMonths(1).ToString("dd MMM yyyy");
+            switch (cbMembershipType2.Text?.ToUpper())
+            {
+                case "QUARTERLY":
+                    dtEndDate.Text = DateTime.Now.AddMonths(3).ToString("dd MMM yyyy");
+                    break;
+                case "HALFYEARLY":
+                    dtEndDate.Text = DateTime.Now.AddMonths(6).ToString("dd MMM yyyy");
+                    break;
+                case "YEARLY":
+                    dtEndDate.Text = DateTime.Now.AddMonths(12).ToString("dd MMM yyyy");
+                    break;
+            }
+        }
+
+        private void dtStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            SetToDate();
+        }
+
+        private void SetToDate()
+        {
+            if (!string.IsNullOrEmpty(dtStartDate.Text))
+            {
+                DateTime sDate = DateTime.Now;
+                DateTime.TryParseExact(dtStartDate.Text, "dd MMM yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out sDate);
+                dtEndDate.Text = sDate.AddMonths(1).ToString("dd MMM yyyy");
+                switch (cbMembershipType2.Text?.ToUpper())
+                {
+                    case "QUARTERLY":
+                        dtEndDate.Text = sDate.AddMonths(3).ToString("dd MMM yyyy");
+                        break;
+                    case "HALFYEARLY":
+                        dtEndDate.Text = sDate.AddMonths(6).ToString("dd MMM yyyy");
+                        break;
+                    case "YEARLY":
+                        dtEndDate.Text = sDate.AddMonths(12).ToString("dd MMM yyyy");
+                        break;
+                }
+            }
+        }
+
+        private void cbMembershipType2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetToDate();
         }
     }
 }

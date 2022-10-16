@@ -86,6 +86,25 @@ namespace MantraBioTimeSDK
         public int userId { get; set; }
         public string name { get; set; }
     }
+
+    public class GetUserByIdResponse
+    {
+        public int Id { get; set; }
+        public string phoneNumber { get; set; }
+        public string userName { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public string dame { get; set; }
+        public string gender { get; set; }
+        public string dob { get; set; }
+        public string address { get; set; }
+        public string adharNo { get; set; }
+        public string maritalStatus { get; set; }
+        public string occupation { get; set; }
+        public string referBy { get; set; }
+        public int membershipType { get; set; }
+        public string refreshToken { get; set; }
+    }
     public class UserDetail
     {
         public int UserId { get; set; }

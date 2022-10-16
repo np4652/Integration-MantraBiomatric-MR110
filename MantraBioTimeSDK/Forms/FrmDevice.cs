@@ -204,7 +204,7 @@ namespace MantraBioTimeSDK
             {
                 MantraBioTimeSDK.theForm.lblDeviceName.Text = "BIOFACE-MSD1K";
                 clsGlobal.DeviceType = 2;
-                //MantraBioTimeSDK.theForm.btnUserDataMgmt.Enabled = true;
+                MantraBioTimeSDK.theForm.btnUserDataMgmt.Enabled = true;
                 CallForm();
             }
             catch (Exception Ex)
