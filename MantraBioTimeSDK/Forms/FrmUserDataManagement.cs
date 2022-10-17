@@ -919,7 +919,7 @@ namespace MantraBioTimeSDK
                 }
                 if (clsGlobal.IsConnect)
                 {
-                    string apiData = helper.PostJsonDataUsingHWR("http://localhost:53104/api/user/collectFee", new
+                    string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/collectFee", new
                     {
                         UserId = string.IsNullOrEmpty(txtUserID2.Text) ? 0 : Convert.ToInt32(txtUserID2.Text),
                         PhoneNumber = txtmobileNo.Text,
@@ -931,6 +931,8 @@ namespace MantraBioTimeSDK
                         MembershipType = cbMembershipType2.Text,
                     });
                     var response = JsonConvert.DeserializeObject<CollectFeeResponse>(apiData);
+                    this.btnPrint.Visible = true;
+                    clsGlobal.PrintURL = clsGlobal.PrintURL.Replace("{0}", response.ledgerId.ToString());
                     if (response.statusCode == 1 && response.userId > 0)
                     {
                         _flgVal = MantraBioTime.SetUserValidDate(clsGlobal.DeviceType, response.userId.ToString(), dtStartDate.Value.ToString("yyyy-MM-dd"), dtEndDate.Value.ToString("yyyy-MM-dd"));
@@ -1188,6 +1190,9 @@ namespace MantraBioTimeSDK
                     dtEndDate.Text = DateTime.Now.AddMonths(12).ToString("dd MMM yyyy");
                     break;
             }
+
+            clsGlobal.PrintURL = "https://themusclesbargym.in/Invoice/{0}";
+            this.btnPrint.Visible = false;
         }
 
         private void dtStartDate_ValueChanged(object sender, EventArgs e)
@@ -1220,6 +1225,11 @@ namespace MantraBioTimeSDK
         private void cbMembershipType2_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetToDate();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(clsGlobal.PrintURL);
         }
     }
 }

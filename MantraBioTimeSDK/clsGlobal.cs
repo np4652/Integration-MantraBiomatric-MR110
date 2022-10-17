@@ -18,6 +18,7 @@ namespace MantraBioTimeSDK
         public static string DevPass = "0";
         public static int DeviceType = 0;
         public static bool IsConnect = false;
+        public static string PrintURL = "https://themusclesbargym.in/Invoice/{0}";
         public static string ErrorPrint(int aErrorCode)
         {
             switch (aErrorCode)
@@ -79,6 +80,7 @@ namespace MantraBioTimeSDK
     public class CollectFeeResponse : APIResponse
     {
         public int userId { get; set; }
+        public int ledgerId { get; set; }
     }
 
     public class subscriptionbyuserResponse

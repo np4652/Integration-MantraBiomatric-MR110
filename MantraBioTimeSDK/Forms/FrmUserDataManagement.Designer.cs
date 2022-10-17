@@ -126,6 +126,7 @@ namespace MantraBioTimeSDK
             this.Privilege = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.pnlUserDataManagement.SuspendLayout();
             this.grpUserDataManagement.SuspendLayout();
             this.tabAddUser.SuspendLayout();
@@ -188,6 +189,7 @@ namespace MantraBioTimeSDK
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnPrint);
             this.groupBox5.Controls.Add(this.label28);
             this.groupBox5.Controls.Add(this.txtDiscount);
             this.groupBox5.Controls.Add(this.label27);
@@ -1176,6 +1178,20 @@ namespace MantraBioTimeSDK
             this.label11.TabIndex = 68;
             this.label11.Text = "Password";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(169, 336);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(112, 39);
+            this.btnPrint.TabIndex = 121;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // FrmUserDataManagement
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1307,5 +1323,6 @@ namespace MantraBioTimeSDK
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblSuccessMsg;
         private System.Windows.Forms.Button btnResetUserForm;
+        private System.Windows.Forms.Button btnPrint;
     }
 }
