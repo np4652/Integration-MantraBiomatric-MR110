@@ -35,6 +35,7 @@ namespace MantraBioTimeSDK
             this.tabAddUser = new System.Windows.Forms.TabControl();
             this.tabAddUserMain = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
             this.txtDiscount = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -126,7 +127,7 @@ namespace MantraBioTimeSDK
             this.Privilege = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnPrint = new System.Windows.Forms.Button();
+            this.rdStaff = new System.Windows.Forms.RadioButton();
             this.pnlUserDataManagement.SuspendLayout();
             this.grpUserDataManagement.SuspendLayout();
             this.tabAddUser.SuspendLayout();
@@ -209,10 +210,25 @@ namespace MantraBioTimeSDK
             this.groupBox5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(498, 9);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(412, 383);
+            this.groupBox5.Size = new System.Drawing.Size(412, 397);
             this.groupBox5.TabIndex = 89;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "SUBSCRIPTION";
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(169, 336);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(112, 39);
+            this.btnPrint.TabIndex = 121;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Visible = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // label28
             // 
@@ -389,6 +405,7 @@ namespace MantraBioTimeSDK
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.rdStaff);
             this.groupBox4.Controls.Add(this.btnResetUserForm);
             this.groupBox4.Controls.Add(this.lblSuccessMsg);
             this.groupBox4.Controls.Add(this.btnSearchById);
@@ -421,7 +438,7 @@ namespace MantraBioTimeSDK
             this.groupBox4.Controls.Add(this.label22);
             this.groupBox4.Location = new System.Drawing.Point(20, 10);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(472, 382);
+            this.groupBox4.Size = new System.Drawing.Size(472, 396);
             this.groupBox4.TabIndex = 86;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Add User";
@@ -429,7 +446,7 @@ namespace MantraBioTimeSDK
             // btnResetUserForm
             // 
             this.btnResetUserForm.BackColor = System.Drawing.Color.DarkRed;
-            this.btnResetUserForm.Location = new System.Drawing.Point(191, 335);
+            this.btnResetUserForm.Location = new System.Drawing.Point(191, 347);
             this.btnResetUserForm.Name = "btnResetUserForm";
             this.btnResetUserForm.Size = new System.Drawing.Size(127, 39);
             this.btnResetUserForm.TabIndex = 126;
@@ -563,7 +580,7 @@ namespace MantraBioTimeSDK
             // btnAddNewUser
             // 
             this.btnAddNewUser.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnAddNewUser.Location = new System.Drawing.Point(324, 335);
+            this.btnAddNewUser.Location = new System.Drawing.Point(324, 347);
             this.btnAddNewUser.Name = "btnAddNewUser";
             this.btnAddNewUser.Size = new System.Drawing.Size(127, 39);
             this.btnAddNewUser.TabIndex = 83;
@@ -1178,19 +1195,16 @@ namespace MantraBioTimeSDK
             this.label11.TabIndex = 68;
             this.label11.Text = "Password";
             // 
-            // btnPrint
+            // rdStaff
             // 
-            this.btnPrint.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnPrint.FlatAppearance.BorderSize = 0;
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(169, 336);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(112, 39);
-            this.btnPrint.TabIndex = 121;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = false;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.rdStaff.ForeColor = System.Drawing.Color.Black;
+            this.rdStaff.Location = new System.Drawing.Point(20, 321);
+            this.rdStaff.Name = "rdStaff";
+            this.rdStaff.Size = new System.Drawing.Size(107, 18);
+            this.rdStaff.TabIndex = 127;
+            this.rdStaff.TabStop = true;
+            this.rdStaff.Text = "Staff";
+            this.rdStaff.UseVisualStyleBackColor = true;
             // 
             // FrmUserDataManagement
             // 
@@ -1324,5 +1338,6 @@ namespace MantraBioTimeSDK
         private System.Windows.Forms.Label lblSuccessMsg;
         private System.Windows.Forms.Button btnResetUserForm;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.RadioButton rdStaff;
     }
 }

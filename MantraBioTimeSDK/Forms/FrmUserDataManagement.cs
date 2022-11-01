@@ -781,7 +781,8 @@ namespace MantraBioTimeSDK
                             Occupation = txtOccupation.Text,
                             MaritalStatus = cbMaritalStatus.Text[0],
                             MembershipType = mt,
-                            Address = txtAddress.Text
+                            Address = txtAddress.Text,
+                            Role = rdStaff.Checked ? 4 : 3
                         });
                         if (apiData.Contains("validation errors"))
                         {
@@ -804,7 +805,6 @@ namespace MantraBioTimeSDK
                                     IsUserEnable = true,
                                     Name = txtUName.Text
                                 });
-
                                 //txtUName.Text = string.Empty;
                                 //txtPhoneNumber.Text = string.Empty;
                                 //txtEmail.Text = string.Empty;
@@ -911,11 +911,19 @@ namespace MantraBioTimeSDK
             {
                 var helper = new Helpers();
                 int paymentMode = 0;
+                int membershipType = 1;
                 switch (cbMode.Text)
                 {
                     case "Cash": paymentMode = 1; break;
                     case "Bank": paymentMode = 2; break;
                     case "UPI": paymentMode = 3; break;
+                }
+                switch (cbMembershipType2.Text)
+                {
+                    case "Monthly": membershipType = 1; break;
+                    case "Quarterly": membershipType = 2; break;
+                    case "HalfYearly": membershipType = 3; break;
+                    case "Yearly": membershipType = 4; break;
                 }
                 if (clsGlobal.IsConnect)
                 {
@@ -928,7 +936,8 @@ namespace MantraBioTimeSDK
                         FromDate = dtStartDate.Text,
                         ToDate = dtEndDate.Text,
                         PaymentMode = paymentMode,
-                        MembershipType = cbMembershipType2.Text,
+                        MembershipType = membershipType,
+                        transactionType = 1
                     });
                     var response = JsonConvert.DeserializeObject<CollectFeeResponse>(apiData);
                     this.btnPrint.Visible = true;
