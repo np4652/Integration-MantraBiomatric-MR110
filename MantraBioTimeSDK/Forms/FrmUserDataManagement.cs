@@ -631,7 +631,7 @@ namespace MantraBioTimeSDK
                     }
                     if (isValid)
                     {
-                        StringBuilder sb = new StringBuilder("https://themusclesbargym.in/api/subscriptionbyuser?");
+                        StringBuilder sb = new StringBuilder("https://themusclesbargym.co.in/api/subscriptionbyuser?");
                         sb.Append($"userId={txtUID.Text}");
                         string apiData = new WebClient().DownloadString(sb.ToString());
                         var response = JsonConvert.DeserializeObject<APIResponse<subscriptionbyuserResponse>>(apiData);
@@ -770,7 +770,7 @@ namespace MantraBioTimeSDK
                     if (clsGlobal.IsConnect)
                     {
                         var helper = new Helpers();
-                        string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/register", new
+                        string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.co.in/api/user/register", new
                         {
                             Name = txtUName.Text,
                             PhoneNumber = txtPhoneNumber.Text,
@@ -782,7 +782,8 @@ namespace MantraBioTimeSDK
                             MaritalStatus = cbMaritalStatus.Text[0],
                             MembershipType = mt,
                             Address = txtAddress.Text,
-                            Role = rdStaff.Checked ? 4 : 3
+                            Role = rdStaff.Checked ? 4 : 3,
+                            IsCardio = rdbCardio.Checked ? true : false
                         });
                         if (apiData.Contains("validation errors"))
                         {
@@ -927,7 +928,7 @@ namespace MantraBioTimeSDK
                 }
                 if (clsGlobal.IsConnect)
                 {
-                    string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.in/api/user/collectFee", new
+                    string apiData = helper.PostJsonDataUsingHWR("https://themusclesbargym.co.in/api/user/collectFee", new
                     {
                         UserId = string.IsNullOrEmpty(txtUserID2.Text) ? 0 : Convert.ToInt32(txtUserID2.Text),
                         PhoneNumber = txtmobileNo.Text,
@@ -1101,7 +1102,7 @@ namespace MantraBioTimeSDK
         {
             var helper = new Helpers();
             var userId = string.IsNullOrEmpty(txtUserID2.Text) ? 0 : Convert.ToInt32(txtUserID2.Text);
-            string apiData = helper.PostJsonDataUsingHWR($"https://themusclesbargym.in/api/user/getById?id={userId}", new
+            string apiData = helper.PostJsonDataUsingHWR($"https://themusclesbargym.co.in/api/user/getById?id={userId}", new
             {
 
             });
@@ -1158,6 +1159,9 @@ namespace MantraBioTimeSDK
                 {
                     dtEndDate.Text = subscriptionDetail[1];
                 }
+
+                rdStaff.Checked = response.result.role?.ToUpper()=="STAFF";
+                rdbCardio.Checked = response.result.IsCardio;
             }
             else
             {
@@ -1200,8 +1204,11 @@ namespace MantraBioTimeSDK
                     break;
             }
 
-            clsGlobal.PrintURL = "https://themusclesbargym.in/Invoice/{0}";
+            clsGlobal.PrintURL = "https://themusclesbargym.co.in/Invoice/{0}";
             this.btnPrint.Visible = false;
+            lblSuccessMsg.Text = string.Empty;
+            rdStaff.Checked=false;
+            rdbCardio.Checked=false;
         }
 
         private void dtStartDate_ValueChanged(object sender, EventArgs e)
@@ -1240,5 +1247,6 @@ namespace MantraBioTimeSDK
         {
             System.Diagnostics.Process.Start(clsGlobal.PrintURL);
         }
+
     }
 }

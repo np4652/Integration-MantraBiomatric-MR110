@@ -18,7 +18,7 @@ namespace MantraBioTimeSDK
         public static string DevPass = "0";
         public static int DeviceType = 0;
         public static bool IsConnect = false;
-        public static string PrintURL = "https://themusclesbargym.in/Invoice/{0}";
+        public static string PrintURL = "https://themusclesbargym.co.in/Invoice/{0}";
         public static string ErrorPrint(int aErrorCode)
         {
             switch (aErrorCode)
@@ -105,7 +105,9 @@ namespace MantraBioTimeSDK
         public string occupation { get; set; }
         public string referBy { get; set; }
         public int membershipType { get; set; }
+        public string role { get; set; }
         public string refreshToken { get; set; }
+        public bool IsCardio { get; set; }
     }
     public class UserDetail
     {
@@ -191,7 +193,7 @@ namespace MantraBioTimeSDK
                         MantraBioTimeSDK.theForm.EventLogs.TopIndex = MantraBioTimeSDK.theForm.EventLogs.Items.Count - 1;
                         var serializeLog = JsonConvert.SerializeObject(Dt);
                         //var helper = new Helpers();
-                        string apiData = PostJsonDataUsingHWR("https://themusclesbargym.in/api/syncattendance", new
+                        string apiData = PostJsonDataUsingHWR("https://themusclesbargym.co.in/api/user/syncattendance", new
                         {
                             data = serializeLog
                         });
@@ -225,7 +227,7 @@ namespace MantraBioTimeSDK
             {
                 try
                 {
-                    string apiData = new WebClient().DownloadString("https://themusclesbargym.in/api/user/subscriptionexpired");
+                    string apiData = new WebClient().DownloadString("https://themusclesbargym.co.in/api/user/subscriptionexpired");
                     var data = JsonConvert.DeserializeObject<List<DisableUsers>>(apiData);
                     foreach (var user in data)
                     {

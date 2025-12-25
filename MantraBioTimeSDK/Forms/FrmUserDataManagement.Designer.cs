@@ -53,6 +53,8 @@ namespace MantraBioTimeSDK
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
             this.dtEndDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rdbCardio = new System.Windows.Forms.RadioButton();
+            this.rdStaff = new System.Windows.Forms.RadioButton();
             this.btnResetUserForm = new System.Windows.Forms.Button();
             this.lblSuccessMsg = new System.Windows.Forms.Label();
             this.btnSearchById = new System.Windows.Forms.Button();
@@ -127,7 +129,6 @@ namespace MantraBioTimeSDK
             this.Privilege = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.rdStaff = new System.Windows.Forms.RadioButton();
             this.pnlUserDataManagement.SuspendLayout();
             this.grpUserDataManagement.SuspendLayout();
             this.tabAddUser.SuspendLayout();
@@ -234,11 +235,11 @@ namespace MantraBioTimeSDK
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label28.Location = new System.Drawing.Point(32, 269);
+            this.label28.Location = new System.Drawing.Point(35, 269);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(61, 14);
+            this.label28.Size = new System.Drawing.Size(45, 14);
             this.label28.TabIndex = 120;
-            this.label28.Text = "Discount";
+            this.label28.Text = "RC No";
             // 
             // txtDiscount
             // 
@@ -405,6 +406,7 @@ namespace MantraBioTimeSDK
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.rdbCardio);
             this.groupBox4.Controls.Add(this.rdStaff);
             this.groupBox4.Controls.Add(this.btnResetUserForm);
             this.groupBox4.Controls.Add(this.lblSuccessMsg);
@@ -442,6 +444,28 @@ namespace MantraBioTimeSDK
             this.groupBox4.TabIndex = 86;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Add User";
+            // 
+            // rdbCardio
+            // 
+            this.rdbCardio.ForeColor = System.Drawing.Color.Black;
+            this.rdbCardio.Location = new System.Drawing.Point(94, 323);
+            this.rdbCardio.Name = "rdbCardio";
+            this.rdbCardio.Size = new System.Drawing.Size(107, 18);
+            this.rdbCardio.TabIndex = 128;
+            this.rdbCardio.TabStop = true;
+            this.rdbCardio.Text = "Cardio";
+            this.rdbCardio.UseVisualStyleBackColor = true;
+            // 
+            // rdStaff
+            // 
+            this.rdStaff.ForeColor = System.Drawing.Color.Black;
+            this.rdStaff.Location = new System.Drawing.Point(20, 321);
+            this.rdStaff.Name = "rdStaff";
+            this.rdStaff.Size = new System.Drawing.Size(107, 18);
+            this.rdStaff.TabIndex = 127;
+            this.rdStaff.TabStop = true;
+            this.rdStaff.Text = "Staff";
+            this.rdStaff.UseVisualStyleBackColor = true;
             // 
             // btnResetUserForm
             // 
@@ -1195,17 +1219,6 @@ namespace MantraBioTimeSDK
             this.label11.TabIndex = 68;
             this.label11.Text = "Password";
             // 
-            // rdStaff
-            // 
-            this.rdStaff.ForeColor = System.Drawing.Color.Black;
-            this.rdStaff.Location = new System.Drawing.Point(20, 321);
-            this.rdStaff.Name = "rdStaff";
-            this.rdStaff.Size = new System.Drawing.Size(107, 18);
-            this.rdStaff.TabIndex = 127;
-            this.rdStaff.TabStop = true;
-            this.rdStaff.Text = "Staff";
-            this.rdStaff.UseVisualStyleBackColor = true;
-            // 
             // FrmUserDataManagement
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1339,5 +1352,6 @@ namespace MantraBioTimeSDK
         private System.Windows.Forms.Button btnResetUserForm;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.RadioButton rdStaff;
+        private System.Windows.Forms.RadioButton rdbCardio;
     }
 }

@@ -94,7 +94,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -201,12 +201,30 @@
     <EmbeddedResource Include="MantraBioTimeSDK.resx">
       <DependentUpon>MantraBioTimeSDK.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\x86\Debug\MantraBioTimeSDK.FrmAccessManagement.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\MantraBioTimeSDK.FrmDevice.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\MantraBioTimeSDK.FrmLogDataManagement.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\MantraBioTimeSDK.FrmOthers.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\MantraBioTimeSDK.FrmPushData.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\MantraBioTimeSDK.FrmTerminal.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\MantraBioTimeSDK.FrmUserDataManagement.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\MantraBioTimeSDK.MantraBioTimeSDK.resources" />
+    <EmbeddedResource Include="obj\x86\Debug\MantraBioTimeSDK.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\x86\Debug\Database\MantraBioTimeDB.sqlite" />
+    <None Include="bin\x86\Debug\MantraBioTimeSDK.vshost.exe.manifest" />
+    <None Include="bin\x86\Debug\MantraBioTimeSDK.zip" />
+    <None Include="bin\x86\Debug\RegisterFile.bat" />
     <None Include="MantraBioTimeSDK_TemporaryKey.pfx" />
+    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\x86\Debug\MantraBioTimeSDK.csproj.AssemblyReference.cache" />
+    <None Include="obj\x86\Debug\MantraBioTimeSDK.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\x86\Debug\MantraBioTimeSDK.csproj.GenerateResource.cache" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -257,6 +275,49 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\x86\Debug\app.publish\MantraBioTimeSDK.exe" />
+    <Content Include="bin\x86\Debug\commpro.dll" />
+    <Content Include="bin\x86\Debug\comms.dll" />
+    <Content Include="bin\x86\Debug\excel_lib_dll_en.dll" />
+    <Content Include="bin\x86\Debug\excel_lib_dll_en_ss.dll" />
+    <Content Include="bin\x86\Debug\excel_lib_dll_sc.dll" />
+    <Content Include="bin\x86\Debug\excel_lib_dll_sc_ss.dll" />
+    <Content Include="bin\x86\Debug\excel_lib_dll_tc.dll" />
+    <Content Include="bin\x86\Debug\excel_lib_dll_tc_ss.dll" />
+    <Content Include="bin\x86\Debug\excel_lib_dll_th.dll" />
+    <Content Include="bin\x86\Debug\excel_lib_dll_th_ss.dll" />
+    <Content Include="bin\x86\Debug\GEN_FONT.dll" />
+    <Content Include="bin\x86\Debug\Interop.zkemkeeper.dll" />
+    <Content Include="bin\x86\Debug\MantraBioTimeDLL.dll" />
+    <Content Include="bin\x86\Debug\MantraBioTimeSDK.vshost.exe" />
+    <Content Include="bin\x86\Debug\plcommpro.dll" />
+    <Content Include="bin\x86\Debug\plcomms.dll" />
+    <Content Include="bin\x86\Debug\plrscagent.dll" />
+    <Content Include="bin\x86\Debug\plrscomm.dll" />
+    <Content Include="bin\x86\Debug\pltcpcomm.dll" />
+    <Content Include="bin\x86\Debug\plusbcomm.dll" />
+    <Content Include="bin\x86\Debug\rscagent.dll" />
+    <Content Include="bin\x86\Debug\rscomm.dll" />
+    <Content Include="bin\x86\Debug\SBPCCOMM.dll" />
+    <Content Include="bin\x86\Debug\SBXPCDLL.dll" />
+    <Content Include="bin\x86\Debug\SBXUser.dll" />
+    <Content Include="bin\x86\Debug\SQLite.Interop.dll" />
+    <Content Include="bin\x86\Debug\System.Data.SQLite.dll" />
+    <Content Include="bin\x86\Debug\tcpcomm.dll" />
+    <Content Include="bin\x86\Debug\usbcomm.dll" />
+    <Content Include="bin\x86\Debug\usbstd.dll" />
+    <Content Include="bin\x86\Debug\zkemkeeper.dll" />
+    <Content Include="bin\x86\Debug\zkemsdk.dll" />
+    <Content Include="obj\x86\Debug\MantraBioTimeSDK.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\x86\Debug\MantraBioTimeSDK.exe" />
+    <Content Include="obj\x86\Debug\MantraBioTimeSDK.pdb" />
+    <Content Include="obj\x86\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\x86\Debug\EPImage\" />
+    <Folder Include="bin\x86\Debug\MORXImage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
